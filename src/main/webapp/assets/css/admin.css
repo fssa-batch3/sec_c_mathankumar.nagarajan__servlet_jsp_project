@@ -1,0 +1,531 @@
+@charset "ISO-8859-1";
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
+body {
+	margin: 0%;
+	padding: 0%;
+	/* font-family: 'Barlow', sans-serif; */
+	font-family: 'Inter', sans-serif;
+	color: white;
+}
+
+a {
+	text-decoration: none;
+}
+
+nav {
+	background-color: #252b3b;
+	display: flex;
+	align-items: center;
+}
+
+header {
+	display: flex;
+	filter: drop-shadow(20%);
+}
+
+ul .menu {
+	line-height: 60px;
+	color: rebeccapurple;
+}
+
+#logo {
+	/* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+	width: 20%;
+}
+
+#logo img {
+	width: 50%;
+	margin: 15px 35px;
+}
+
+ul {
+	margin: 0px 0px;
+	width: 15%;
+	background-color: #252b3b;
+	height: 91.1vh;
+}
+
+.right_side, .tables {
+	/* display: none; */
+	width: 85%;
+	background-color: #1d222e;
+	height: 91.1vh;
+}
+
+ul menu {
+	padding: 0%;
+	font-size: 20px;
+	color: white;
+	margin: 30px 0%;
+}
+
+.menu {
+	font-size: 14px;
+	font-weight: bold;
+	color: #4c5366;
+}
+
+.nav {
+	margin: 0%;
+	padding: 0%;
+	width: 80%;
+	/* height: 80px; */
+	background-color: #252b3b;
+	/* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#profile {
+	font-size: 20px;
+	font-weight: 500;
+	color: white;
+	margin-right: 30px;
+}
+
+.search_icon {
+	padding: 0%;
+	margin: 0%;
+	position: absolute;
+	font-size: 18px;
+	/* left: 10px; */
+	margin-left: 40px;
+	margin-top: 8px;
+	color: #181c29;
+}
+
+#search {
+	margin-left: 30px;
+	width: 100%;
+	height: 35px;
+	border-radius: 50px;
+	border: none;
+	outline: none;
+	padding-left: 35px;
+	font-size: 14px;
+	background-color: #2b3244;
+	color: white;
+}
+
+.logout {
+	margin-right: 25px;
+	font-size: 20px;
+	color: white;
+}
+
+/* Nav finished */
+.h1 {
+	font-size: 24px;
+	font-weight: 600;
+	color: white;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.block span {
+	display: block;
+}
+
+.dash_icon {
+	color: #4f5bbc;
+	font-size: 20px;
+}
+
+.dash_align {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.dash_align h4 {
+	margin-left: 30px;
+}
+
+.dash_align div {
+	margin-right: 30px;
+	font-size: 14px;
+}
+
+.container .container_main {
+	display: flex;
+	justify-content: space-around;
+}
+
+.container_left {
+	width: 65%;
+	/* background-color: aliceblue; */
+	height: 30px;
+}
+
+.container_right {
+	width: 30%;
+	/* background-color: aqua; */
+}
+
+.first_row {
+	display: flex;
+	justify-content: space-between;
+}
+
+.three_divs {
+	width: 26%;
+	padding: 20px;
+	background-color: #252b3b;
+	border-radius: 3px;
+}
+
+.percentage {
+	font-size: 14px;
+	padding: 2px 10px;
+	background-color: #1e9765;
+	border-radius: 3px;
+}
+
+/* Bar chart codes */
+#bar_chart {
+	background-color: #252b3b;
+	padding: 20px;
+	border-radius: 3px;
+	margin: 30px 0px;
+}
+
+.chart_headings {
+	font-size: 16px;
+	font-weight: 500;
+	margin: 0%;
+	padding: 0%;
+}
+
+#pie_chart {
+	background-color: #252b3b;
+	padding: 20px;
+	border-radius: 3px;
+}
+
+#two_pie_charts {
+	background-color: #252b3b;
+	padding: 15px;
+	border-radius: 3px;
+	margin-top: 25px;
+}
+
+#two_pie_charts div {
+	display: flex;
+	justify-content: space-around;
+}
+
+#summa {
+	background-color: white;
+	width: 100%;
+	height: 10px;
+}
+
+/* Create Store Codes */
+.right_side_store {
+	/* display: none; */
+	width: 85%;
+	background-color: #1d222e;
+	height: 91.1vh;
+}
+
+.right_side_products {
+	width: 85%;
+	background-color: #1d222e;
+	height: 91.1vh;
+}
+
+.create_product_btn {
+	float: right;
+	width: 18.5%;
+}
+
+.create_store_btn {
+	float: right;
+	width: 18.5%;
+}
+
+.create_product_btn button {
+	padding: 15px 40px;
+	background-color: #fb7b44;
+	box-shadow: #fb7b44 0px 0px 15px;
+	font-size: 16px;
+	font-weight: bolder;
+	color: white;
+	border: none;
+	outline: none;
+}
+
+.create_store_btn button {
+	padding: 15px 40px;
+	background-color: #fb7b44;
+	box-shadow: #fb7b44 0px 0px 15px;
+	font-size: 16px;
+	font-weight: bolder;
+	color: white;
+	border: none;
+	outline: none;
+}
+
+table {
+	width: 90%;
+	margin: auto;
+	font-family: 'Inter', sans-serif;
+	border-collapse: collapse;
+}
+
+table tr th {
+	text-align: start;
+}
+
+.label {
+	width: 25%;
+	height: 50px;
+}
+
+.inputs {
+	width: 75%;
+}
+
+.inputs input {
+	width: 90%;
+	height: 35px;
+	font-size: 16px;
+	color: white;
+	outline: none;
+	background-color: #2b3141;
+	border: 1px solid #2f3649;
+	border-radius: 3px;
+}
+
+.btns {
+	width: 100%;
+}
+
+.btns button {
+	float: right;
+	margin-top: 30px;
+	margin-right: 150px;
+	padding: 15px 40px;
+	background-color: #23b723;
+	box-shadow: #23b723 0px 0px 10px;
+	font-size: 16px;
+	font-weight: bolder;
+	color: white;
+	border: none;
+	outline: none;
+}
+
+/* Tables */
+.store_table {
+	width: 95%;
+	height: 80vh;
+	margin: auto;
+	background-color: #252b3b;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #b2b2b2;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+.btn_delete_store {
+	padding: 10px 30px;
+	background-color: #4f5bbc;
+	color: white;
+	font-size: 16px;
+	font-weight: bolder;
+	border: none;
+	box-shadow: #4f5bbc 0px 0px 10px;
+	border-radius: 5%;
+	cursor: pointer;
+	margin: 0px 50px;
+}
+
+.btn_view_store, .btn_edit_store{
+	padding: 10px 30px;
+	background-color: #4f5bbc;
+	color: white;
+	font-size: 16px;
+	font-weight: bolder;
+	border: none;
+	box-shadow: #4f4f4f 0px 0px 10px;
+	border-radius: 5%;
+	cursor: pointer;
+}
+
+.table {
+	width: 100%;
+	margin: auto;
+	font-family: 'Inter', sans-serif;
+	border-collapse: collapse;
+}
+
+.td {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+	text-align: center;
+}
+
+.product_img {
+	max-width: 200px;
+	min-width: 100px;
+	max-height: 100px;
+	padding: 0%;
+	margin: 0%;
+}
+
+#table_add_product {
+	padding: 10px 30px;
+	margin-left: 20px;
+	background-color: #fb7b44;
+	box-shadow: #fb7b44 0px 0px 10px;
+	border: none;
+	outline: none;
+	font-weight: bold;
+	color: white;
+}
+
+
+/* Store Details Update Box Code */
+#store_update_box {
+	display: none;
+	width: 800px;
+	height: 320px;
+	background-color: #1d222e;
+	/* margin: auto; */
+	position: absolute;
+	top: 250px;
+	left: 25%;
+}
+
+#store_update_box1 {
+	display: none;
+	width: 800px;
+	height: 320px;
+	background-color: #1d222e;
+	/* margin: auto; */
+	position: absolute;
+	top: 250px;
+	left: 25%;
+}
+
+#product_update_box {
+	display: none;
+	width: 800px;
+	height: 320px;
+	background-color: #1d222e;
+	/* margin: auto; */
+	position: absolute;
+	top: 250px;
+	left: 25%;
+}
+
+#product_update_box1 {
+	display: none;
+	width: 800px;
+	height: 320px;
+	background-color: #1d222e;
+	/* margin: auto; */
+	position: absolute;
+	top: 250px;
+	left: 25%;
+}
+
+.center {
+	text-align: center;
+	color: #dddddd;
+}
+
+#update_btn {
+	margin-right: 310px;
+	margin-top: 20px;
+}
+
+#add_product_btn {
+	margin-right: 310px;
+	margin-top: 20px;
+}
+
+/* Delete Box Codes */
+#delete_box {
+    position: absolute;
+    top: 350px;
+    left: 40%;
+    width: 400px;
+    height: 200px;
+    background-color: #1d222e;
+    border-radius: 20px;
+    text-align: center;
+    margin: 0%;
+    display: none;
+}
+
+
+#delete_file_text {
+    margin-top: 30px;
+}
+#delete_box_btns {
+    display: flex;
+    justify-content: space-around;
+}
+
+#delete_box p{
+    color: #4c5366;
+    font-weight: bold;
+}
+
+#delete_box_btns button:first-child{
+    padding: 15px 50px;
+    background-color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+#delete_box_btns button:nth-child(2){
+    padding: 15px 50px;
+    background-color: #fece2e;
+    font-size: 16px;
+    /* color: white; */
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+/* Cancel btn code for all pop */
+.cancel_icon{
+    position: absolute;
+    right: 0%;
+    font-size: 20px;
+    background: transparent;
+    font-weight: bold;
+    color: white;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+}

@@ -1,0 +1,82 @@
+@charset "ISO-8859-1";
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
+
+body{
+    font-family: 'Barlow', sans-serif;
+    margin: 0%;
+    /* background-color: black; */
+
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    margin-top: 100px;
+}
+#sign-img{
+    width: 800px;
+}
+.box-column{
+    display: flex;
+}
+.input{
+    margin-right: 30px;
+    margin-bottom: 30px;
+    height: 30px;
+    width: 250px;
+}
+.icon{
+    width: 20px;
+    background-color: white;
+    margin-left: 20px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+.box-column p{
+    margin-right: 30px;
+}
+.icons-alignment{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(44, 43, 43);
+    margin-right: 20px;
+    margin-top: 30px;
+}
+.create-ac-btn{
+    padding: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: rgb(29, 28, 28);
+    background-color: orange;
+    display: inline;
+    text-decoration: none;
+}
+#checkbox{
+    margin-bottom: 30px;
+}
+.icons-alignment b{
+    color: white;
+}
+
+#signin{
+    display: flex;
+    margin-top: 40px;
+    margin-left: 1150px;    
+}
+
+a{
+    text-decoration: none;
+}
+input{
+    border: 2px solid black;
+}
+
+input:valid{
+border: 2px solid green;
+}
+input:invalid{
+    border: 2px solid red;
+}
