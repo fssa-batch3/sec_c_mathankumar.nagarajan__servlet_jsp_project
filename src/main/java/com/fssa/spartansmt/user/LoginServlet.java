@@ -56,8 +56,16 @@ public class LoginServlet extends HttpServlet {
 		// create session
 		HttpSession session = request.getSession();
 		
-		// passing email for getting userID
-		User user = (email);
+		try {
+			
+			User user = userService.getUserByEmail(email);
+			
+			//if(user.pa   )
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	
 	}
 

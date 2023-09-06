@@ -16,7 +16,17 @@
 </head>
 <body>
 
-	<h1 id="heading">Stores</h1>
+	<jsp:include page="/nav.jsp"></jsp:include>
+
+	<img id="banner" src="https://iili.io/J9alynn.jpg" alt="">
+
+	<div class="search">
+		<input type="search" id="search_box"> <label for="search_box">Search</label>
+	</div>
+
+	<h2 id="store-center">STORES</h2>
+
+
 
 	<div class="stores" id="center-stores">
 
@@ -28,8 +38,8 @@
 			for (Store store : storeList) {
 		%>
 
-		<a href="GetProductsByStoreId?id=<%=store.getId()%>">
-			<div class="store">
+		<a href="GetAllProductDetailsUsingStoreId?id=<%=store.getId()%>">
+			<div class="store search_store">
 
 				<img class="imgstore" src=<%=store.getStoreLogoLink()%>
 					alt="store image">
@@ -60,8 +70,38 @@
 		%>
 
 	</div>
+
+
+	<jsp:include page="/footer.jsp"></jsp:include>
+
+
+
+	<script type="text/javascript">
 	
+	 // Search function
+    const stores_searchbox = document.getElementById("search_box");
+    stores_searchbox.addEventListener("keyup", e => {
+
+        const search = e.target.value.toLowerCase();
+        const stores = document.querySelectorAll(".search_store");
+
+        stores.forEach(ele => {
+
+            const match_name = ele.children[1].textContent.toLowerCase();
+
+            if (match_name.includes(search)) {
+                ele.style.display = "block";
+            }
+            else {
+                ele.style.display = "none";
+            }
+
+        })
+
+    })
+
 	
-	
+	</script>
+
 </body>
 </html>
