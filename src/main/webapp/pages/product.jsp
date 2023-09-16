@@ -8,10 +8,19 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Spartans Market Town</title>
+
 <link rel="stylesheet" type="text/css"
 	href="/spartansmt_web/assets/css/product.css">
+
+<link rel="stylesheet" type="text/css"
+	href="/spartansmt_web/assets/css/nav.css">
+
 <link rel="icon" type="image/png" sizes="32x32"
 	href="https://iili.io/HpZaout.png">
+
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+
 
 </head>
 <body>
@@ -33,7 +42,7 @@
 				<img class="icon" id="wishlist_icon"
 					src="https://iili.io/Hy2cCoG.png" alt="img wishlist icon">
 			</div>
-			<!-- <a href=""> -->
+			<a href="<%=request.getContextPath() %>/pages/viewproduct.jsp?id=<%=product.getProductId() %>">
 			<div class="products_items">
 				<img class="productsimg" src="<%=product.getProductImage()%>"
 					alt="Product Images">
@@ -53,7 +62,7 @@
 					<h5>FREE Delivery By SpartansMT</h5>
 				</div>
 			</div>
-			<!-- </a> -->
+			</a>
 		</div>
 
 		<%

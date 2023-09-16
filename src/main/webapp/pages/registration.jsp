@@ -11,21 +11,52 @@
 
 <!-- CSS File -->
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/registration.css">
+	href="<%=request.getContextPath() %>/assets/css/registration.css">
+	
+	    <!-- Notify CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.css">
+    
+    <!-- Notify Js script file -->
+    <script src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js"> </script>
 
 </head>
 <body>
 
-	<%!public static final String REGISTRATION_SERVLET = "../RegistrationServlet";%>
-
 
 	<p id="signin">
-		Already have an account? <a href="../../pages/login/login.html">Sign
+		Already have an account? <a href="<%=request.getContextPath() %>/pages/login.jsp">Sign
 			in here!</a>
 	</p>
 
+	<!-- Notify Alert -->
+			<%
+			String success = (String) request.getAttribute("success");
+			String error = (String) request.getAttribute("error");
+			%>
 
-	<form action="<%=REGISTRATION_SERVLET %>" method="post">
+
+			<%
+			if (error != null) {
+			%>
+			<script>
+				    let error = "<%=error%>";
+				    Notify.error(error);
+				</script>
+			<%
+			}
+			%>
+
+			<%
+			if (success != null) {
+			%>
+			<script>
+			    	let success = "<%=success%>";
+				Notify.success(success);
+			</script>
+			<%
+			}
+			%>
+	<form action="<%=request.getContextPath() %>/RegistrationServlet" method="post">
 
 
 		<div class="container">
@@ -39,9 +70,9 @@
 				<div class="box-column">
 					<label>First Name<br> <input type="text"
 						id="firstname" name="firstname" class="input"
-						pattern="[A-Za-Z ]{1-16}" required></label> <label>Last
+						pattern="^[A-Za-z ]+$" required></label> <label>Last
 						Name<br> <input type="text" id="lastname" name="lastname"
-						class="input" pattern="[A-Za-Z ]{1-16}" required>
+						class="input" pattern="^[A-Za-z ]+$" required>
 					</label>
 				</div>
 
@@ -58,10 +89,10 @@
 
 				<div class="box-column">
 
-					<label>Create Password<br> <input id="creatpassword"
+					<label>Create Password<br> <input id="creatpassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
 						type="password" name="createpassword" class="input" required>
 					</label> <label>Confirm Password<br> <input
-						id="confirmpassword" type="password" required
+						id="confirmpassword" type="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
 						name="confirmpassword" class="input">
 					</label>
 

@@ -4,15 +4,25 @@
 <%@page import="com.fssa.spartansmt.model.Store"%>
 
 <%@page import="java.util.*"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Spartans Market Town</title>
+
 <link rel="stylesheet" type="text/css"
 	href="/spartansmt_web/assets/css/store.css">
+	
+<link rel="stylesheet" type="text/css"
+	href="/spartansmt_web/assets/css/nav.css">
+	
 <link rel="icon" type="image/png" sizes="32x32"
 	href="https://iili.io/HpZaout.png">
+
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+
 </head>
 <body>
 
@@ -30,45 +40,6 @@
 
 	<div class="stores" id="center-stores">
 
-		<%
-		List<Store> storeList = (List<Store>) request.getAttribute("storeList");
-
-		if (storeList != null) {
-
-			for (Store store : storeList) {
-		%>
-
-		<a href="GetAllProductDetailsUsingStoreId?id=<%=store.getId()%>">
-			<div class="store search_store">
-
-				<img class="imgstore" src=<%=store.getStoreLogoLink()%>
-					alt="store image">
-				<div class="floor">
-					<h3><%=store.getName()%></h3>
-					<p><%=store.getCategory()%></p>
-					<p>
-						<b>View More Product</b>
-					</p>
-				</div>
-
-			</div>
-
-		</a>
-
-		<%
-		}
-
-		// ...
-		} else {
-		// Handle the case when storeList is null
-		%>
-
-		<p>Null</p>
-
-		<%
-		}
-		%>
-
 	</div>
 
 
@@ -78,7 +49,7 @@
 
 	<script type="text/javascript">
 	
-	 // Search function
+	// Search function
     const stores_searchbox = document.getElementById("search_box");
     stores_searchbox.addEventListener("keyup", e => {
 
@@ -102,6 +73,9 @@
 
 	
 	</script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/assets/js/storedetailsajax.js"></script>
 
 </body>
 </html>
