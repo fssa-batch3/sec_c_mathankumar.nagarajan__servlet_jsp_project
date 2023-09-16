@@ -3,6 +3,7 @@ package com.fssa.spartansmt.user;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fssa.spartansmt.exception.DAOException;
 import com.fssa.spartansmt.exception.InvalidUserException;
+import com.fssa.spartansmt.exception.ServiceException;
 import com.fssa.spartansmt.model.User;
 import com.fssa.spartansmt.service.UserService;
 
@@ -19,30 +21,11 @@ import com.fssa.spartansmt.service.UserService;
  */
 @WebServlet("/RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public RegistrationServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	RequestDispatcher dis = null;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -62,20 +45,26 @@ public class RegistrationServlet extends HttpServlet {
 
 			UserService userService = new UserService();
 			if (password.trim().equals(confirmPass.trim())) {
-				if (userService.addUser(user)) {
-					out.println("User Successfully Registered!");
 
-					// RequestDispatcher dis = request.getRequestDispatcher("");
-					// dis.forward(request, response);
-				} else {
-					out.println("Invalid Email And Password");
-				}
+				userService.addUser(user);
+				request.setAttribute("success", "Successfully Registered");
+				dis = request.getRequestDispatcher("pages/login.jsp");
+
 			} else {
-				out.println("Password and Confirm Password Doesn't Match");
+
+				request.setAttribute("error", "Password don't match to the confirm password");
+				dis = request.getRequestDispatcher("pages/registration.jsp");
+
 			}
 
-		} catch (DAOException | InvalidUserException e) {
+		} catch (DAOException | InvalidUserException | ServiceException e) {
+			
 			e.getStackTrace();
+			request.setAttribute("error", e.getMessage());
+			dis = request.getRequestDispatcher("pages/registration.jsp");
+		
+		} finally {
+			dis.forward(request, response);
 		}
 
 	}
