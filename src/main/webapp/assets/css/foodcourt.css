@@ -1,0 +1,88 @@
+@charset "ISO-8859-1";
+
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
+body{
+    margin: 0%;
+    font-family: 'Barlow', sans-serif;
+}
+
+#banner{
+    width: 100%;
+    height: 450px;
+}
+.imgstore{
+    width: 180px;
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.floor1{
+    display: flex;
+    justify-content: space-around;
+}
+.star-rating{
+    padding: 5px;
+    background-color: green;
+    border-radius: 10px;
+    color: white;
+    width: 50px;
+}
+.stores{
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.stores1{
+    display: flex;
+    justify-content: space-evenly;
+}
+.store{
+    margin-top: 30px;
+    width: 260px;
+    height: 280px;
+    padding-top: 30px;
+    color: black;
+    border: 1px solid gray;
+    margin-bottom: 50px;
+    background-color: white;
+    transition: .2s;
+}
+.store:hover{
+    transform: scale(1.1);
+    box-shadow: 1px 1px 10px 1px black;
+    
+}
+.heading-align{
+    text-align: center;
+}
+.view-more{
+    text-align: center;
+}
+
+
+
+
+/* Cart icon */
+#cart_icon {
+    font-size: 25px;
+}
+
+/* cart icon count */
+#cart_count {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-weight: bolder;
+    /* border: 2px solid black; */
+    /* background-color: aqua; */
+    border-radius: 100%;
+    position: absolute;
+    font-size: 18px;
+    right: 77px;
+    top: 0px;
+}
+

@@ -1,0 +1,200 @@
+@charset "ISO-8859-1";
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
+body {
+    font-family: 'Barlow', sans-serif;
+    margin: 0%;
+}
+
+
+
+/* new flow */
+
+@media screen and (max-width:600px) {
+
+
+
+    header {
+        border: 1px solid black;
+        width: 400px;
+        margin-top: 150px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 1px 1px 20px 1px rgb(0, 0, 0);
+    }
+
+    main div img {
+        display: none;
+        width: 300px;
+    }
+
+    main {
+        display: flex;
+        justify-content: space-around;
+    }
+    .input-box {
+        background: transparent;
+        width: 300px;
+        height: 50px;
+        border: none;
+        outline: none;
+    }
+
+    .input-alignment {
+        display: flex;
+        align-items: center;
+    }
+
+    .material-symbols-outlined {
+        margin-right: 10px;
+    }
+
+    #login {
+        font-size: 24px;
+        padding: 10px;
+        padding-left: 60px;
+        padding-right: 60px;
+        background-color: blue;
+        display: inline;
+        color: white;
+    }
+
+    #checkbox {
+        margin-bottom: 50px;
+        margin-top: 30px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    div h1 {
+        margin-bottom: 50px;
+        margin-top: 50px;
+    }
+
+    .footer {
+        display: flex;
+        color: black;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+
+    .footer div img {
+        width: 30px;
+    }
+
+    #icons {
+        display: flex;
+        justify-content: space-between;
+        height: 30px;
+        width: 210px;
+        align-items: center;
+
+    }
+
+    #icon p {
+        margin: 0%;
+        margin-left: 30px;
+    }
+
+    .footer a {
+        color: blue;
+    }
+
+}
+@media screen and (min-width:601px) {
+
+
+
+    header {
+        border: 1px solid black;
+        width: 1000px;
+        margin-top: 150px;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 1px 1px 20px 1px black;
+
+    }
+
+    main div img {
+        width: 500px;
+    }
+
+    main {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .input-box {
+        width: 300px;
+        height: 50px;
+        border: none;
+        outline: none;
+    }
+
+    .input-alignment {
+        display: flex;
+        align-items: center;
+    }
+
+    .material-symbols-outlined {
+        margin-right: 10px;
+    }
+
+    #login {
+        font-size: 24px;
+        padding: 10px;
+        padding-left: 60px;
+        padding-right: 60px;
+        background-color: blue;
+        display: inline;
+        color: white;
+    }
+
+    #checkbox {
+        margin-bottom: 70px;
+        margin-top: 30px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    div h1 {
+        margin-bottom: 50px;
+        margin-top: 50px;
+    }
+
+    .footer {
+        display: flex;
+        color: black;
+        justify-content: space-around;
+    }
+
+    .footer div img {
+        width: 30px;
+    }
+
+    #icons {
+        display: flex;
+        justify-content: space-between;
+        height: 30px;
+        width: 210px;
+        align-items: center;
+
+    }
+
+    #icon p {
+        margin: 0%;
+        margin-left: 30px;
+    }
+
+    .footer a {
+        color: blue;
+    }
+
+}

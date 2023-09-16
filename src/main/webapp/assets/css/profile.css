@@ -1,0 +1,488 @@
+@charset "ISO-8859-1";
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
+/* Active Page */
+
+.active:visited{
+    border: 2px solid black;
+    color: blue;
+    background-color: #2e3393;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.h1{
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+
+body {
+    font-family: 'Barlow', sans-serif;
+    margin: 0%;
+    padding: 0%;
+    /* background-color: #005270; */
+}
+
+ /* New One Code */
+
+
+header{
+    width: 80%;
+    height: 750px;
+    /* background-color: #0c6687; */
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    margin: 4.5% auto;
+    display: flex;
+    justify-content: center;
+}
+
+.profile{
+    width: 30%;
+}
+
+.details {
+    width: 70%;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 3%;
+}
+
+.details h1{
+    margin: 0%;
+}
+
+.profile ul{
+    display: inline-block;
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+}
+
+.profile ul menu{
+    padding: 0%;
+    cursor: pointer;
+    width: 80%;
+    height: 40px;
+    font-weight: bold;
+    font-size: 110%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15% auto;
+    color: black;
+    background-color: rgb(220, 220, 220);
+    /* border-radius: 4%; */
+}
+
+.profile ul menu:hover{
+    transform: scale(1.02);
+    color: white;
+    border: 2px solid blue;
+}
+
+/* .profile div{
+    display: none;
+} */
+
+.profile div h3{
+    color: black;
+}
+
+.profile img {
+    width: 80%;
+    width: 250px;
+    height: 250px;
+    border:2px solid black;
+    display: block;
+    margin: 0% auto;
+    margin-top: 10%;
+    border-radius: 5%;
+}
+
+.profile div button{
+    width: 80%;
+    background-color: whitesmoke;
+    display: block;
+    margin: auto auto;
+}
+
+#user_name{
+    text-align: center;
+    margin: 0%;
+    margin-top: 15px;
+}
+
+
+/* Profile Information Slide */
+
+.pages_align{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0%;
+    margin-bottom: 10px;
+}
+
+.pages_align h4{
+    margin: 0%;
+}
+
+.pages_align i {
+    margin: auto 10px;
+    font-size: 14px;
+    color: blue;
+}
+
+.name{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.two_input{
+    width: 350px;
+}
+
+.one_input{
+    width: 800px;
+}
+
+.three_input{
+    width: 260px;
+}
+
+input{
+    color: black;
+    height: 40px;
+    font-size: 18px;
+    margin-bottom: 40px;
+    /* outline: none; */
+    /* border: 2px solid black; */
+    /* border: none; */
+}
+
+select{
+    height: 40px;
+    font-size: 18px;
+    color: black;
+    margin-bottom: 40px;
+}
+
+.btn_flex button {
+    width: 200px;
+    height: 40px;
+    margin: 6% 4%;
+    background-color: aqua;
+}
+
+label{
+    font-size: 18px;
+    color: #2e3393;
+    font-weight: bold;
+}
+
+
+/* Input Border Colours */
+
+input:valid{
+    border-color: green;
+}
+
+input:invalid{
+    border-color: red;
+}
+
+select:valid{
+    border-color: green;
+}
+
+select:invalid{
+    border-color: green;
+}
+
+
+/* Profile Page Filished */
+
+
+
+/* order tracker */
+
+#order_tracker{
+    /* background-color: #01411C; */
+    /* mix-blend-mode: color-burn; */
+    /* display: none; */
+    width: 60%;
+    margin: auto;
+    padding: 50px;
+}
+
+#order_date_div{
+    display: flex;
+    align-items: center;
+}
+
+#order_date_div i{
+    transform: rotate(-90deg);
+    color: lightgreen;
+    margin-right: 5px;
+
+}
+
+#order_date_div p{
+    margin: 0% 10px;
+}
+
+#order_items{
+    display: flex;
+    align-items: center;
+}
+
+.order_img{
+    /* border: 2px solid black; */
+    margin-right: 20px;
+    padding: 10px;
+    width: 200px;
+    /* height: 100px; */
+}
+
+#order_items img{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 150px;
+    /* min-width: 100px; */
+    max-height: 100px;
+}
+
+.order_items_details{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.order_price{
+    text-align: end;
+}
+
+#user_order_details{
+    display: flex;
+}
+
+#user_order_details div{
+    width: 50%
+}
+
+#total_price{
+    text-align: end;
+}
+
+/* order tracker code end */
+
+/* Order Page Starting */
+
+.order_date{
+    display: flex;
+}
+
+.order_color{
+    width: 15px;
+    height: 15px;
+    margin: 5px;
+    border-radius: 50%;
+    background-color: greenyellow;
+} 
+
+.order_list{
+    height: 500px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+.order_list::-webkit-scrollbar {
+    /* display: none; */
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #b2b2b2; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+
+.product{
+    display: flex;
+    height: 120px;
+    background-color: white;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.order_list div{
+    
+    
+}
+
+.order_product .product_img {
+    min-width: none;
+    max-width: 200px;
+    max-height: 100px;
+}
+
+.order_numer h1,p{
+    margin: 0%;
+}
+
+.silder_fles{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.silder_fles div{
+    width: 100px;
+    display: flex;
+}
+
+.silder_fles div p{
+    font-size: 25px;
+    margin: 5px;
+}
+
+/* Order Page Codes End */
+
+/* Wishlist Page Codes start */
+
+
+
+
+
+
+.limit{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.limit div{
+    display: flex;
+    align-items: center;
+}
+
+.limit div p{
+    padding: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.limit div i{
+    font-size: 24px;
+    padding: 10px;
+    /* background-color: #c0c5c4; */
+    border-radius: 50%;
+}
+
+.limit p {
+    font-weight: bolder;
+    color: #191f24;
+}
+
+
+
+
+.items{
+    margin-top: 20px;
+    height: 500px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.items div{
+    padding: 15px;
+    /* margin: 20px auto; */
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.items div img{
+    max-width: 150px;
+    min-height: auto;
+    max-height: 100px;
+}
+
+.items div h3 {
+    width: 300px;
+}
+
+.items div button{
+    padding: 10px 20px;
+    color: white;
+    font-weight: bolder;
+    background-color: #01411C;
+}
+
+.items::-webkit-scrollbar {
+    /* display: none; */
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #b2b2b2; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+
+
+/* .slider{
+    display: block;
+    flex-direction: row;
+} */
+
+
+/* Wishlist Page Codes End */
+
+
+
+
+
+
