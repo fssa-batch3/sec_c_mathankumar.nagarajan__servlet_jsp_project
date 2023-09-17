@@ -51,11 +51,13 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("actUserEmail", user.getEmail());
 				request.setAttribute("success", "Successfully Logged In");
 				dis = request.getRequestDispatcher("index.jsp");
+				dis.forward(request, response);
 				
 			}else {
 				
 				request.setAttribute("error", "Enter Valid Email and Password");
 				dis = request.getRequestDispatcher("pages/login.jsp");
+				dis.forward(request, response);
 				
 			}
 
@@ -63,7 +65,6 @@ public class LoginServlet extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("error", e.getMessage());
 			dis = request.getRequestDispatcher("pages/login.jsp");
-		} finally {
 			dis.forward(request, response);
 		}
 

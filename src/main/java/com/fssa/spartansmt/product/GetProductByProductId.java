@@ -51,7 +51,6 @@ public class GetProductByProductId extends HttpServlet {
 		}catch(ServiceException | InvalidProductDetailsException | DAOException e) {
 			e.printStackTrace();
 			out.println(e.getMessage());
-			out.println(e.getMessage());
 		}
 
 	}

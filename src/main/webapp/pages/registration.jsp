@@ -89,10 +89,10 @@
 
 				<div class="box-column">
 
-					<label>Create Password<br> <input id="creatpassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+					<label>Create Password<br> <input id="creatpassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,}$"
 						type="password" name="createpassword" class="input" required>
 					</label> <label>Confirm Password<br> <input
-						id="confirmpassword" type="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+						id="confirmpassword" type="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,}$"
 						name="confirmpassword" class="input">
 					</label>
 

@@ -75,9 +75,7 @@
                     <div class="input-alignment">
                         <span class="material-symbols-outlined">person</span>
                         <label>
-                            <input class="input-box" id="confirm_email" type="email" name="email" placeholder="Email"
-                                pattern="^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                                required></label>
+                            <input class="input-box" id="confirm_email" type="email" name="email" placeholder="Email" required></label>
                     </div>
                     <hr>
                     <div class="input-alignment">
@@ -85,7 +83,7 @@
                         <label>
                             <input class="input-box" id="password" type="password" name="password"
                                 placeholder="Password"
-                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" required></label>
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,}$" required></label>
                     </div>
                     <hr>
                     <label>

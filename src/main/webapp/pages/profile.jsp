@@ -1,29 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 
-    
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-   
-    <link rel="stylesheet" href="../assets/css/profile.css">
-   
-    <title>SpartansMT</title>
-   
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/image/home/logo icon.png" alt="logo icon">
-   
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-   
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="../assets/css/profile.css">
+
+<title>SpartansMT</title>
+
+<link rel="icon" type="image/png" sizes="32x32"
+	href="../assets/image/home/logo icon.png" alt="logo icon">
+
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+	integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+	crossorigin="anonymous" referrerpolicy="no-referrer">
 
 
 
@@ -32,144 +34,143 @@
 
 <body>
 
-    <header id="profile_page">
+	
 
-        <div class="profile">
+	<%
+	String userEmail = (String) request.getSession().getAttribute("actUserEmail");
+	%>
 
-            <div>
-                <img src="../assets/image/services/buildings.jpg" alt="User Profile">
-                <h3 id="user_name"></h3>
+	<header id="profile_page">
 
-            </div>
+		<div class="profile">
 
-            <br>
+			<div>
+				<img src="../assets/image/services/buildings.jpg" alt="User Profile">
+				<h3 id="user_name"></h3>
 
-            <ul>
-                <a href="<%=request.getContextPath() %>/pages/profile.jsp?id=profile">
-                    <menu id="btn_profile" class="active">
-                        Profile
-                    </menu>
-                </a>
-                <a href="<%=request.getContextPath() %>/pages/profile.jsp?id=orders">
-                    <menu id="btn_order" class="active">
-                        Orders
-                    </menu>
-                </a>
+			</div>
 
-                <a href="<%=request.getContextPath() %>/pages/profile.jsp?id=wishlist">
-                    <menu id="btn_wishlist" class="active">
-                        Wishlist
-                    </menu>
-                </a>
-                <!-- <menu id="btn_payment" class="active">Payment</menu> -->
-            </ul>
+			<br>
 
-        </div>
+			<ul>
+				<a
+					href="<%=request.getContextPath()%>/pages/profile.jsp?id=profile">
+					<menu id="btn_profile" class="active">Profile
+					</menu>
+				</a>
+				<a href="<%=request.getContextPath()%>/pages/profile.jsp?id=orders">
+					<menu id="btn_order" class="active">Orders
+					</menu>
+				</a>
 
-        <div class="details profile_details" id="profile_details">
+				<a
+					href="<%=request.getContextPath()%>/pages/profile.jsp?id=wishlist">
+					<menu id="btn_wishlist" class="active">Wishlist
+					</menu>
+				</a>
+				<!-- <menu id="btn_payment" class="active">Payment</menu> -->
+			</ul>
 
-            <div class="pages_align">
-                <a href="../index.jsp">
-                    <h4>Home</h4>
-                </a>
-                <i class="fa-solid fa-chevron-right"></i>
-                <a href="../pages/home/profile.html?id=orders">
-                    <h4>Profile</h4>
-                </a>
-            </div>
+		</div>
 
-            <form id="form">
+		<div class="details profile_details" id="profile_details">
 
-                <div class="name">
-                    <div>
-                        <label for="first_name">First name</label>
-                        <br>
-                        <input type="text" id="first_name" class="two_input" disabled>
-                    </div>
-                    <div>
-                        <label for="last_name">Last name</label>
-                        <br>
-                        <input type="text" id="last_name" class="two_input" disabled>
-                    </div>
-                </div>
+			<div class="pages_align">
+				<a href="<%=request.getContextPath()%>/index.jsp">
+					<h4>Home</h4>
+				</a> <i class="fa-solid fa-chevron-right"></i> <a
+					href="../pages/home/profile.html?id=orders">
+					<h4>Profile</h4>
+				</a>
+			</div>
 
-                <div>
-                    <label for="email">Email</label>
-                    <br>
-                    <input type="email" id="email" class="one_input" disabled>
-                </div>
+			<form id="form">
 
-                <div>
-                    <label for="address">Mobile number</label>
-                    <br>
-                    <input id="address" type="tel" pattern="[789][0-9]{9}" class="one_input" required disabled>
-                </div>
+				<div class="name">
+					<div>
+						<label for="first_name">First name</label> <br> <input
+							type="text" id="first_name" class="two_input" name="firstName" disabled>
+					</div>
+					<div>
+						<label for="last_name">Last name</label> <br> <input
+							type="text" id="last_name" name="lastName" class="two_input" disabled>
+					</div>
+				</div>
 
-                <div>
-                    <label for="address2">Address</label>
-                    <br>
-                    <input id="address2" type="text" class="one_input" required disabled>
-                </div>
+				<div>
+					<label for="email">Email</label> <br> <input type="email" name="email" value="<%=userEmail %>"
+						id="email" class="one_input" disabled>
+				</div>
 
-                <div class="name">
+				<div>
+					<label for="address">Mobile number</label> <br> <input
+						id="mobileNumber" type="tel" pattern="[789][0-9]{9}" name="mobileNumber" class="one_input"
+						required disabled>
+				</div>
 
-                    <div>
-                        <label for="country">Country</label>
-                        <br>
-                        <input id="country" type="text" class="three_input" required disabled>
-                    </div>
+				<div>
+					<label for="address2">Address</label> <br> <input
+						id="address2" type="text" class="one_input" required disabled>
+				</div>
 
-                    <div>
-                        <label for="state">State</label>
-                        <br>
-                        <input id="state" type="text" class="three_input" required disabled>
-                    </div>
+				<div class="name">
 
-                    <div>
-                        <label for="zip_code" class="three_input">Zip Code</label>
-                        <br>
-                        <input id="zip_code" type="number" pattern="[0-9]{6}" required disabled>
-                    </div>
+					<div>
+						<label for="country">Country</label> <br> <input id="country"
+							type="text" class="three_input" required disabled>
+					</div>
 
-                </div>
+					<div>
+						<label for="state">State</label> <br> <input id="state"
+							type="text" class="three_input" required disabled>
+					</div>
 
-                <div class="btn_flex">
-                    <button id="edit" onclick="editItem()" type="button">Edit Profile</button>
-                    <button id="update" type="submit">Update Profile</button>
-                    <button onclick="deleteItem()" type="button">Delete Profile</button>
+					<div>
+						<label for="zip_code" class="three_input">Zip Code</label> <br>
+						<input id="zip_code" type="number" pattern="[0-9]{6}" required
+							disabled>
+					</div>
 
-                </div>
+				</div>
 
-            </form>
+				<div class="btn_flex">
+					<button id="edit" onclick="editItem()" type="button">Edit
+						Profile</button>
+					<button id="update" type="submit">Update Profile</button>
+					<button onclick="deleteItem()" type="button">Delete
+						Profile</button>
 
-        </div>
+				</div>
 
-        <div class="details order_details" id="order_details">
+			</form>
 
-            <div class="pages_align">
-                <a href="../home/home.html">
-                    <h4>Home</h4>
-                </a>
-                <i class="fa-solid fa-chevron-right"></i>
-                <h4>Orders</h4>
-            </div>
+		</div>
 
-            <span class="h1">Orders</span>
+		<div class="details order_details" id="order_details">
 
-            <div class="silder_fles">
-                <h4 id="product_count"></h4>
+			<div class="pages_align">
+				<a href="../home/home.html">
+					<h4>Home</h4>
+				</a> <i class="fa-solid fa-chevron-right"></i>
+				<h4>Orders</h4>
+			</div>
 
-                <!-- <div> -->
-                    <!-- <p id="silder_left"><i class="fa-solid fa-caret-left"></i></p> -->
-                    <!-- <p id="silder_point">1</p> -->
-                    <!-- <p id="silder_right"><i class="fa-solid fa-caret-right"></i></p> -->
-                <!-- </div> -->
+			<span class="h1">Orders</span>
 
-            </div>
+			<div class="silder_fles">
+				<h4 id="product_count"></h4>
 
-            <div class="order_list">
+				<!-- <div> -->
+				<!-- <p id="silder_left"><i class="fa-solid fa-caret-left"></i></p> -->
+				<!-- <p id="silder_point">1</p> -->
+				<!-- <p id="silder_right"><i class="fa-solid fa-caret-right"></i></p> -->
+				<!-- </div> -->
 
-                <!-- <div>
+			</div>
+
+			<div class="order_list">
+
+				<!-- <div>
 
                     <div class="order_numer">
                         <h1>Order 629173</h1>
@@ -245,25 +246,24 @@
 
                 </div> -->
 
-            </div>
+			</div>
 
-        </div>
+		</div>
 
-        <div class="details wishlist_details" id="wishlist_details">
+		<div class="details wishlist_details" id="wishlist_details">
 
-            <div class="pages_align">
-                <a href="../home/home.html">
-                    <h4>Home</h4>
-                </a>
-                <i class="fa-solid fa-chevron-right"></i>
-                <h4>WishList</h4>
-            </div>
+			<div class="pages_align">
+				<a href="../home/home.html">
+					<h4>Home</h4>
+				</a> <i class="fa-solid fa-chevron-right"></i>
+				<h4>WishList</h4>
+			</div>
 
-            <span class="h1">Wishlist</span>
+			<span class="h1">Wishlist</span>
 
-            <div class="limit">
-                <p id="wl_total_items"></p>
-                <!-- <div id="slider">
+			<div class="limit">
+				<p id="wl_total_items"></p>
+				<!-- <div id="slider">
                     <p>
                         <i class="fa-solid fa-caret-left"></i>
                     </p>
@@ -272,11 +272,11 @@
                         <i class="fa-solid fa-caret-right"></i>
                     </p>
                 </div> -->
-            </div>
+			</div>
 
-            <div class="items">
+			<div class="items">
 
-                <!-- <div>
+				<!-- <div>
                     
                     <img src="../assets/image/stores/items/nike1.jpg" alt="">
                     <h3>this product is one of the most expensive product in the world</h3>
@@ -316,41 +316,94 @@
 
                 </div> -->
 
-            </div>
+			</div>
 
-        </div>
+		</div>
 
-    </header>
+	</header>
 
-    <script>        document.getElementById("profile_details").style.display = "block";
+	<!-- ajax Script Link -->
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script>        
+    	
+    	
+    	document.getElementById("profile_details").style.display = "block";
         document.getElementById("order_details").style.display = "none";
         document.getElementById("wishlist_details").style.display = "none";
 
-        // select input box codes
-        // let state = document.getElementById("state").value;
-        // let selectedValue;
+        
+        // pages display's codes
+        const btn_profile = document.getElementById("btn_profile")
+        btn_profile.addEventListener("click", el => {
+        	el.preventDefault();
+            document.getElementsByClassName("profile_details")[0].style.display = "block";
+            document.getElementsByClassName("wishlist_details")[0].style.display = "none"
+            document.getElementsByClassName("order_details")[0].style.display = "none";
+            console.log("profile")
+        })
 
-        // let country = document.getElementById("country").value
-        // let countryValue;
+        const btn_order = document.getElementById("btn_order")
+        btn_order.addEventListener("click", el => {
+        	el.preventDefault();
+            document.getElementsByClassName("order_details")[0].style.display = "block";
+            document.getElementsByClassName("profile_details")[0].style.display = "none";
+            document.getElementsByClassName("wishlist_details")[0].style.display = "none"
+            console.log("orders")
+        })
 
-        // state.addEventListener("change", (event) => {
-        //     selectedValue = event.target.value;
-        //     console.log(selectedValue);
-        // });
+        const btn_wishlist = document.getElementById("btn_wishlist");
+        btn_wishlist.addEventListener("click", el => {
+        	el.preventDefault();
+            document.getElementsByClassName("wishlist_details")[0].style.display = "block"
+            document.getElementsByClassName("profile_details")[0].style.display = "none";
+            document.getElementsByClassName("order_details")[0].style.display = "none";
+            console.log("wishlist")
+        })
+        
+        
+		
+       	// Getting Email from Input Box Value
+       	const email = document.getElementById("email").value;
+       
+        // Getting user object using Ajax
+		function getUserDetails() {
+			const url = "http://localhost:8080/spartansmt_web/GetUserDetailsUsingEmail?email=" + email;
+			axios.get(url)
+			  .then(function (response) {
+			    // handle success
+			    console.log(response.data);
+			    const user = response.data;
+			    displayUser(user);
+			  })
+			  .catch(function (error) {
+			    // handle error
+			    console.log(error);
+				})
+		}
+		
+		function displayUser(user) {
+			
+			//const userData = JSON.parse(user.substring(1));
 
-        // country.addEventListener("change", (event) => {
-        //     countryValue = event.target.value;
-        //     console.log(countryValue);
-        // });
+			document.getElementById("first_name").value = user.firstName;
+			document.getElementById("last_name").value = user.lastName;
+			document.getElementById("email").value = user.email;
+			document.getElementById("mobileNumber").value = user.phoneNumber;
+        
+		}
+		
+        
+		getUserDetails();
+        
+        
+        
+        
+        
+        
+        
 
-        // profile page displaying active user code
-        const active_user = JSON.parse(localStorage.getItem('active_user'));
-        const users = JSON.parse(localStorage.getItem('arr'));
-
-        document.getElementById("first_name").value = active_user.first_name;
-        document.getElementById("last_name").value = active_user.last_name;
-        document.getElementById("email").value = active_user.user_email;
-        document.getElementById("address").value = active_user.mobile_number;
+       // COMMENTED
+        /*
         document.getElementById("address2").value = active_user.address;
         document.getElementById("zip_code").value = active_user.zip_code;
 
@@ -358,7 +411,7 @@
         document.getElementById("country").value = active_user.country;
 
         document.getElementById("user_name").innerText = `${active_user.first_name  } ${  active_user.last_name}`;
-
+	*/
         // Update Profile Details codes
 
         const form = document.getElementById("form")
@@ -443,7 +496,7 @@
 
             document.getElementById("first_name").disabled = false
             document.getElementById("last_name").disabled = false
-            document.getElementById("address").disabled = false
+            document.getElementById("mobileNumber").disabled = false
             document.getElementById("address2").disabled = false
             document.getElementById("zip_code").disabled = false
             document.getElementById("state").disabled = false
@@ -451,30 +504,7 @@
 
         }
 
-        // pages display's codes
-        const btn_profile = document.getElementById("btn_profile")
-        btn_profile.addEventListener("click", el => {
-            document.getElementsByClassName("profile_details")[0].style.display = "block";
-            document.getElementsByClassName("wishlist_details")[0].style.display = "none"
-            document.getElementsByClassName("order_details")[0].style.display = "none";
-            console.log("profile")
-        })
-
-        const btn_order = document.getElementById("btn_order")
-        btn_order.addEventListener("click", el => {
-            document.getElementsByClassName("order_details")[0].style.display = "block";
-            document.getElementsByClassName("profile_details")[0].style.display = "none";
-            document.getElementsByClassName("wishlist_details")[0].style.display = "none"
-            console.log("orders")
-        })
-
-        const btn_wishlist = document.getElementById("btn_wishlist");
-        btn_wishlist.addEventListener("click", el => {
-            document.getElementsByClassName("wishlist_details")[0].style.display = "block"
-            document.getElementsByClassName("profile_details")[0].style.display = "none";
-            document.getElementsByClassName("order_details")[0].style.display = "none";
-            console.log("wishlist")
-        })
+       
 
         // <div>
 

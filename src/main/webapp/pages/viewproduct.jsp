@@ -199,7 +199,7 @@
 	        div_button.prepend(a_add_to_cart)
 
 	        const a_buy_no1 = document.createElement("a");
-	        a_buy_no1.setAttribute("href", `../../../cart/payment-page.html?id=${paramsId}`)
+	        a_buy_no1.setAttribute("href", "<%=request.getContextPath() %>/pages/paymentpage.jsp?id=" + paramsId)
 	        div_button.append(a_buy_no1)
 
 
