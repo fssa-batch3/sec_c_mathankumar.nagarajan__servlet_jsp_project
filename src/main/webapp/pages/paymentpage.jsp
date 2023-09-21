@@ -1,192 +1,182 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 
-    
-    
-    
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/paymentpage.css">
-    
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/nav.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@400;700&display=swap"
-        rel="stylesheet">
-    
-    <title>SpartansMT</title>
-    
-    <link rel="icon" type="image/png" sizes="32x32" href="<%=request.getContextPath() %>/assets/image/home/logo icon.png" alt="logo icon">
-    
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/assets/css/paymentpage.css">
+
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/assets/css/nav.css">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@400;700&display=swap"
+	rel="stylesheet">
+
+<title>SpartansMT</title>
+
+<link rel="icon" type="image/png" sizes="32x32"
+	href="<%=request.getContextPath()%>/assets/image/home/logo icon.png"
+	alt="logo icon">
+
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
 
 </head>
 
 <body>
 
+	<%
+	String email = (String) request.getSession().getAttribute("actUserEmail");
+	%>
+
 	<jsp:include page="../nav.jsp"></jsp:include>
-   
 
-    <h1 id="checkout">CHECKOUT</h1>
 
-    <form id="form">
+	<h1 id="checkout">CHECKOUT</h1>
 
-        <header>
+	<form id="form" method="post">
 
-            <div id="left_div">
+		<header>
 
-                <div>
+			<div id="left_div">
 
-                    <h2>Personal Details</h2>
-                    <div>
+				<div>
 
-                        <div>
-                            <label for="">First Name
-                                <br>
-                                <input id="first_name" type="text" class="input" disabled>
-                            </label>
-                        </div>
+					<h2>Personal Details</h2>
+					<div>
 
-                        <div>
-                            <label for="">Last Name
-                                <br>
-                                <input id="last_name" type="text" class="input" disabled>
-                            </label>
-                        </div>
+						<div>
+							<label for="">First Name <br> <input id="first_name"
+								type="text" class="input" disabled>
+							</label>
+						</div>
 
-                        <div>
-                            <label for="">Email Address
-                                <br>
-                                <input id="email" type="email" class="input" disabled>
-                            </label>
-                        </div>
+						<div>
+							<label for="">Last Name <br> <input id="last_name"
+								type="text" class="input" disabled>
+							</label>
+						</div>
 
-                        <div>
-                            <label for="">Phone Number
-                                <br>
-                                <input id="phone_number" pattern="[789][0-9]{9}" type="number" class="input" disabled>
-                            </label>
-                        </div>
+						<div>
+							<label for="">Email Address <br> <input id="email"
+								type="email" value="<%=email%>" class="input" disabled>
+							</label>
+						</div>
 
-                    </div>
+						<div>
+							<label for="">Phone Number <br> <input
+								id="phone_number" pattern="[789][0-9]{9}" type="number"
+								class="input" disabled>
+							</label>
+						</div>
 
-                </div>
+					</div>
 
-                <div>
+				</div>
 
-                    <h2>Shipping Details</h2>
-                    <div>
-                        <h3 id="shipping_address">Shipping Address</h3>
+				<div>
 
-                        <div>
-                            <label for="">Street Address
-                                <br>
-                                <input type="text" id="address" required>
-                            </label>
-                        </div>
+					<h2>Shipping Details</h2>
+					<div>
+						<h3 id="shipping_address">Shipping Address</h3>
 
-                        <div>
-                            <label for="">Country
-                                <br>
-                                <input type="text" id="country" class="address" required>
-                            </label>
-                        </div>
+						<div>
+							<label for="">Street Address <br> <input type="text"
+								id="address" required name="address">
+							</label>
+						</div>
 
-                        <div>
-                            <label for="">State
-                                <br>
-                                <input type="text" id="state" class="address" required>
-                            </label>
-                        </div>
+						<div>
+							<label for="">Country <br> <input type="text"
+								id="country" class="address" name="country" required>
+							</label>
+						</div>
 
-                        <div>
-                            <label for="">Zip code
-                                <br>
-                                <input type="number" pattern="[0-9]{6}" id="zip_code" class="address" required>
-                            </label>
-                        </div>
+						<div>
+							<label for="">State <br> <input type="text"
+								id="state" class="address" name="state" required>
+							</label>
+						</div>
 
-                    </div>
+						<div>
+							<label for="">Zip code <br> <input type="number"
+								pattern="[0-9]{6}" id="zip_code" name="zipCode" class="address" required>
+							</label>
+						</div>
 
-                </div>
+					</div>
 
-                <div>
+				</div>
 
-                    <p>Payment Method</p>
-                    <div>
+				<div>
 
-                        <div class="payment_input_align">
+					<p>Payment Method</p>
+					<div>
+						<div class="payment_input_align">
 
-                            <label for="">
-                                <img class="icon_img" src="<%=request.getContextPath() %>/assets/image/home/paypal.png" alt="icon">
-                                Paypal
-                            </label>
-                            <input name="Payment" type="radio" value="Paypal" class="radio" required>
+							<label for=""> <img class="icon_img"
+								src="<%=request.getContextPath()%>/assets/image/home/paypal.png"
+								alt="icon"> Paypal
+							</label> <input name="Payment" type="radio" value="Paypal" class="radio"
+								required>
 
-                        </div>
+						</div>
 
-                        <div class="payment_input_align">
+			
+						<div class="payment_input_align">
 
-                            <label for="">
-                                <img class="icon_img" src="<%=request.getContextPath() %>/assets/image/home/cash_on_delivery.png" alt="icon">
-                                Cash on delivery
-                            </label>
-                            <input name="Payment" type="radio" value="Cash on delivery" class="radio" required>
+							<label for=""> <img class="icon_img"
+								src="<%=request.getContextPath()%>/assets/image/home/cash_on_delivery.png"
+								alt="icon"> Cash on delivery
+							</label> <input name="Payment" type="radio" value="Cash on delivery"
+								class="radio" required>
 
-                        </div>
+						</div>
 
-                        <div id="paypal_varify">
+						<div id="paypal_varify">
 
-                            <label for="">
-                                Paypal Email Address
-                                <br>
-                                <input type="email">
+							<label for=""> Paypal Email Address <br> <input
+								type="email">
 
-                            </label>
+							</label>
 
-                        </div>
+						</div>
 
-                        <div id="card-details">
+						<div id="card-details">
 
-                            <label for="">
-                                Card number
-                                <br>
-                                <input id="card_number" type="number" pattern="{12}">
-                            </label>
+							<label for=""> Card number <br> <input
+								id="card_number" type="number" pattern="{12}">
+							</label> <label for=""> Expiry date <br> <input
+								id="card_expiry_date" type="date">
+							</label> <label for=""> CVC/CVV <br> <input id="card_cvv"
+								type="number" pattern="{3}">
+							</label>
 
-                            <label for="">
-                                Expiry date
-                                <br>
-                                <input id="card_expiry_date" type="date">
-                            </label>
+						</div>
 
-                            <label for="">
-                                CVC/CVV
-                                <br>
-                                <input id="card_cvv" type="number" pattern="{3}">
-                            </label>
+					</div>
 
-                        </div>
+				</div>
 
-                    </div>
+			</div>
 
-                </div>
+			<div id="right_div">
 
-            </div>
+				<h2>Order summary</h2>
 
-            <div id="right_div">
+				<div id="order_summary">
 
-                <h2>Order summary</h2>
-
-                <div id="order_summary">
-
-                    <!-- <div class="order_items">
+					<!-- <div class="order_items">
 
                         <img class="product_img" src="../../assets/image/stores/ivenus-apple/mobile (6).png" alt="product">
                         <div>
@@ -208,54 +198,60 @@
 
                     </div> -->
 
-                </div>
+				</div>
 
-                <span>Discount code</span>
-                <label id="discount" for="">
-                    <input type="text" name="" id="discount_code">
-                    <button id="apply_btn">Apply</button>
-                </label>
+				<span>Discount code</span> <label id="discount" for=""> <input
+					type="text" name="" id="discount_code">
+					<button id="apply_btn">Apply</button>
+				</label>
 
-                <div>
+				<div>
 
-                    <div id="total_box">
-                        <div>
-                            <h3>Subtotal</h3>
-                            <h3>Delivery cast</h3>
-                            <hr>
-                            <h3>total</h3>
-                        </div>
+					<div id="total_box">
+						<div>
+							<h3>Subtotal</h3>
+							<h3>Delivery cast</h3>
+							<hr>
+							<h3>total</h3>
+						</div>
 
-                        <div>
-                            <h3 id="subtotal"></h3>
-                            <h3>Free</h3>
-                            <hr>
-                            <h3 id="total"></h3>
-                        </div>
+						<div>
+							<h3 id="subtotal"></h3>
+							<h3>Free</h3>
+							<hr>
+							<h3 id="total"></h3>
+						</div>
 
-                    </div>
+					</div>
 
-                </div>
+				</div>
 
-                <div id="btn_id">
+				<div id="btn_id">
 
-                    <button type="submit" id="checkout_btn">Checkout</button>
+					<button type="submit" id="checkout_btn">Checkout</button>
 
-                </div>
+				</div>
 
-            </div>
+			</div>
 
-        </header>
+		</header>
 
-    </form>
-    
-    <!-- ajax Script Link -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	</form>
 
-    <script>        // get date code
+	<!-- ajax Script Link -->
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+	<script>   
+	
+		// Golbal Scope variable used to get ajax values
+		let userId;
+		let productIdArr = [];
+	
+		// get date code
 
         // let newdate;
-        
+        // COMMENTED
+        /*
         const dateObj = new Date();
         const month = dateObj.getUTCMonth() + 1; //months from 1-12
         const day = dateObj.getUTCDate()+2;
@@ -266,28 +262,66 @@
 
         // orders id code
         const order_id = Date.now();
-        console.log(order_id)
+        console.log(order_id) */ // END
+        
+        
+        
+     	// Getting Email from Input Box Value
+       	const email = document.getElementById("email").value;
+        console.log(email);
+       
+        // Getting user object using Ajax
+		function getUserDetails() {
+			const url = "http://localhost:8080/spartansmt_web/GetUserDetailsUsingEmail?email=" + email;
+			axios.get(url)
+			  .then(function (response) {
+			    // handle success
+			    console.log(response.data);
+			    const user = response.data;
+			    displayUser(user);
+			  })
+			  .catch(function (error) {
+			    // handle error
+			    console.log(error);
+				})
+		}
+		
+		function displayUser(user) {
+	
+			userId = user.userId;
+			
+			
+	        document.getElementById("first_name").value = user.firstName;
+	        document.getElementById("last_name").value = user.lastName;
+	        document.getElementById("email").value = user.email;
+	        document.getElementById("phone_number").value = user.phoneNumber;
+	        
+	        if(user.address != null){
+				document.getElementById("address").value = user.address;
+			}
+			if(user.country != null){
+				document.getElementById("country").value = user.country;
+			}
+			if(user.state != null){
+				document.getElementById("state").value = user.state;
+			}
+			if(user.zipCode != null){
+				document.getElementById("zip_code").value = user.zipCode;
+			}
+		
+		}
+		getUserDetails();
+		
+		// console.log("user: " + userId)
 
-		//COMMENTED
-        /*const active_user = JSON.parse(localStorage.getItem('active_user'));
-
-        document.getElementById("first_name").value = active_user.first_name;
-        document.getElementById("last_name").value = active_user.last_name;
-        document.getElementById("email").value = active_user.user_email;
-        document.getElementById("phone_number").value = active_user.mobile_number;
-
-        document.getElementById("address").value = active_user.address;
-        document.getElementById("zip_code").value = active_user.zip_code;
-        document.getElementById("state").value = active_user.state;
-        document.getElementById("country").value = active_user.country;
-
+        /*
         const Cart = JSON.parse(localStorage.getItem("Cart")) ?? []
         const storess = JSON.parse(localStorage.getItem("stores"))*/  // END
 
         const url = window.location.search;                // ?name=Arun
         const urlParams = new URLSearchParams(url);        // converting string into key value pair
         const paramsId = urlParams.get("id")             // return value of the "name" key
-        console.log(paramsId);
+        // console.log(paramsId);
 
         // const num = Number(paramsId)
 
@@ -320,10 +354,9 @@
 			
 			const productData = JSON.parse(product.substring(1));
 
-            
-           
-
-            totalPrice += Number(productData.price)
+			totalPrice += productData.productPrice;
+			productIdArr.push(Number(paramsId));
+            // console.log(totalPrice)
 
             // let div_order_items;
             // let img_product_img;
@@ -364,6 +397,11 @@
             div.append(p_price)
 
             document.querySelector("#order_summary").append(div_order_items)
+            
+            // Appended the Total Price in the HTML Tag
+            document.getElementById("subtotal").innerHTML = '&#8377;' + totalPrice;
+            document.getElementById("total").innerHTML = '&#8377;' + totalPrice;
+            
 		}
 		
 		getProductDetails();
@@ -433,11 +471,14 @@
                 // return el;
             })
 
-        }*/  // END
+        } */ // END
 
-        /*document.getElementById("subtotal").innerText = `₹${  totalPrice}`
-        document.getElementById("total").innerText = `₹${  totalPrice}`
+        /*console.log("print" + totalPrice)
+        document.getElementById("subtotal").innerHTML = '&#8377;' + totalPrice;
+        document.getElementById("total").innerHTML = '&#8377;' + totalPrice;
 
+        */
+        
         // get checkout btn
         const form = document.getElementById("form")
         form.onsubmit = function checkout(e) {
@@ -448,32 +489,13 @@
             const payment_option = document.querySelector(".radio:checked").value
             console.log(payment_option)
 
-            const user_details = JSON.parse(localStorage.getItem("arr"))
-            // const active_user = JSON.parse(localStorage.getItem("active_user"))
+            form.setAttribute("action", "<%=request.getContextPath() %>/PlaceOrderServlet?userId=" + userId + "&totalPrice=" + totalPrice + "&paymentOption=" + payment_option + "&productIdArr=" + productIdArr)
 
-            user_details.find(el => {
+            form.submit();
+            
+     } 
 
-                if (active_user.user_email === el.user_email) {
-
-                    active_user.zip_code = document.getElementById("zip_code").value;
-                    active_user.country = document.getElementById("country").value;
-                    active_user.state = document.getElementById("state").value;
-                    active_user.address = document.getElementById("address").value;
-                    
-                    localStorage.setItem("active_user", JSON.stringify(active_user))
-
-                    el.zip_code = document.getElementById("zip_code").value;
-                    el.country = document.getElementById("country").value;
-                    el.state = document.getElementById("state").value;
-                    el.address = document.getElementById("address").value;
-
-                    localStorage.setItem("arr", JSON.stringify(user_details))
-
-                }
-                // return el;
-            })
-
-            const orders = JSON.parse(localStorage.getItem("orders")) ?? []
+            /*const orders = JSON.parse(localStorage.getItem("orders")) ?? []
 
             // if(order_id == )
 
@@ -505,7 +527,7 @@
                 localStorage.setItem("orders", JSON.stringify(orders))
 
             }
-            else {
+            /*else {
 
                 // let orders = JSON.parse(localStorage.getItem("orders")) ?? []
 
@@ -564,6 +586,16 @@
         cart_count.innerText = count
         
         */
+        
+        
+        /*let form = document.querySelector("form")
+        form.addEventListener("submit", function(e){
+
+            form.setAttribute("action", "PlaceOrderServlet?userId=" + userId + "&totalPrice=" + totalPrice + "&paymentOption=" )
+
+        })*/
+        
+        
     </script>
 
 </body>

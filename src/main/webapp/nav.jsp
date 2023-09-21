@@ -31,8 +31,7 @@ if (userEmail == null) {
 	<ul>
 		<li><a href="<%=request.getContextPath()%>/IndexPageStoreDetails">Home</a>
 		</li>
-		<li><a
-			href="<%=request.getContextPath()%>/StorePageStoreDetails">Stores</a>
+		<li><a href="<%=request.getContextPath()%>/StorePageStoreDetails">Stores</a>
 		</li>
 		<li><a href="<%=request.getContextPath()%>/pages/offers.jsp">Offers</a>
 		</li>
@@ -44,8 +43,8 @@ if (userEmail == null) {
 		<li><a href="<%=request.getContextPath()%>/pages/service.jsp">Services</a>
 		</li>
 
-		<li><a href="<%=request.getContextPath()%>/pages/cart.jsp">
-				<i id="cart_icon" class="material-symbols-outlined">shopping_cart</i>
+		<li><a href="<%=request.getContextPath()%>/pages/cart.jsp"> <i
+				id="cart_icon" class="material-symbols-outlined">shopping_cart</i>
 		</a></li>
 
 		<!-- <p id="cart_count"></p> -->
@@ -55,7 +54,7 @@ if (userEmail == null) {
 					<p>
 						<i class="material-symbols-outlined">person</i> Profile
 					</p>
-				</a> <a href="../home/profile.html?id=orders">
+				</a> <a href="<%=request.getContextPath() %>/pages/profile.jsp?id=orders">
 					<p>
 						<i class="material-symbols-outlined">shopping_bag</i> My Orders
 					</p>

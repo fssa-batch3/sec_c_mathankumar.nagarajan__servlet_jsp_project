@@ -149,7 +149,7 @@
 		<div class="details order_details" id="order_details">
 
 			<div class="pages_align">
-				<a href="../home/home.html">
+				<a href="<%=request.getContextPath()%>/index.jsp">
 					<h4>Home</h4>
 				</a> <i class="fa-solid fa-chevron-right"></i>
 				<h4>Orders</h4>
@@ -253,7 +253,7 @@
 		<div class="details wishlist_details" id="wishlist_details">
 
 			<div class="pages_align">
-				<a href="../home/home.html">
+				<a href="<%=request.getContextPath()%>/index.jsp">
 					<h4>Home</h4>
 				</a> <i class="fa-solid fa-chevron-right"></i>
 				<h4>WishList</h4>
@@ -361,6 +361,8 @@
         })
         
         
+        // Here is Create userId to Get the user Id via the ajax call (below mentioned)
+        let userId;
 		
        	// Getting Email from Input Box Value
        	const email = document.getElementById("email").value;
@@ -383,35 +385,166 @@
 		
 		function displayUser(user) {
 			
-			//const userData = JSON.parse(user.substring(1));
-
+			userId = user.userId;			
+			
 			document.getElementById("first_name").value = user.firstName;
 			document.getElementById("last_name").value = user.lastName;
 			document.getElementById("email").value = user.email;
 			document.getElementById("mobileNumber").value = user.phoneNumber;
+			
+			if(user.address != null){
+				document.getElementById("address2").value = user.address;
+			}
+			if(user.country != null){
+				document.getElementById("country").value = user.country;
+			}
+			if(user.state != null){
+				document.getElementById("state").value = user.state;
+			}
+			if(user.zipCode != null){
+				document.getElementById("zip_code").value = user.zipCode;
+			}
+			
         
 		}
 		
-        
+        // Called the Get User Details Ajax function.
 		getUserDetails();
         
         
-        
-        
-        
-        
-        
+		let items_count = 0;
+		// Edit Profile Input Box Enable Function
+        function editItem() {
 
-       // COMMENTED
-        /*
-        document.getElementById("address2").value = active_user.address;
-        document.getElementById("zip_code").value = active_user.zip_code;
+            document.getElementById("first_name").disabled = false
+            document.getElementById("last_name").disabled = false
+            document.getElementById("mobileNumber").disabled = false
+            document.getElementById("address2").disabled = false
+            document.getElementById("zip_code").disabled = false
+            document.getElementById("state").disabled = false
+            document.getElementById("country").disabled = false
 
-        document.getElementById("state").value = active_user.state;
-        document.getElementById("country").value = active_user.country;
+        }
+		
+		
+		
+     	// Order Details Codes
+     	function getAllOrders() {
+			const url = "http://localhost:8080/spartansmt_web/GetAllOrderesUsingUserId?userId=" + userId;
+			axios.get(url)
+			  .then(function (response) {
+			    // handle success
+			    console.log(response.data);
+			    const order = response.data;
+			    displayOrders(order);
+			  })
+			  .catch(function (error) {
+			    // handle error
+			    console.log(error);
+				})
+		}
+     	
+     	
+     	function displayOrders(order){
+     		
+     		
+     		order.forEach(e => {
+     		
+     			
+     			console.log(e.orderedProducts)
+     			
+     			
+     			
+     		})
+     		
+     		
+     		
+     		
+     		
+     	}
+     	getAllOrders();
+     	
+     	
+     	
+        const orders = JSON.parse(localStorage.getItem("orders")) ?? []
+        
+        orders.find(el => {
 
-        document.getElementById("user_name").innerText = `${active_user.first_name  } ${  active_user.last_name}`;
-	*/
+            // for(let i=orders.length; i<orders.length-4; i++){
+
+            if (el.user_email === active_user.user_email) {
+
+                // items count
+                items_count++
+
+                // order page div alignment
+                // let div;
+                // let div_order_numer;
+                // let h1_order_id;
+                // let div_order_date;
+                // let p_order_color;
+                // let p_order_date;
+                // let div_order_product;
+                // let img_product_img;
+
+                const div = document.createElement("div")
+                div.setAttribute("class", "product")
+                div.addEventListener("click", () => {
+
+                    window.location.href = `order_tracker.html?id=${  el.order_id}`
+
+                })
+
+                const div_order_numer = document.createElement("div")
+                div_order_numer.setAttribute("class", "order_numer")
+                div.prepend(div_order_numer)
+
+                const h1_order_id = document.createElement("h2")
+                h1_order_id.innerText = `Order id: ${  el.order_id}`;
+                div_order_numer.prepend(h1_order_id)
+
+                const div_order_date = document.createElement("div")
+                div_order_date.setAttribute("class", "order_date")
+                div.append(div_order_date)
+
+                const p_order_color = document.createElement("p")
+                p_order_color.setAttribute("class", "order_color")
+                div_order_date.prepend(p_order_color)
+
+                const p_order_date = document.createElement("p")
+                p_order_date.innerText = `Shipped on ${  el.order_date}`;
+                div_order_date.append(p_order_date)
+
+                const div_order_product = document.createElement("div")
+                div_order_product.setAttribute("class", "order_product")
+                div.append(div_order_product)
+
+                const img_product_img = document.createElement("img")
+                img_product_img.setAttribute("class", "product_img")
+                img_product_img.setAttribute("src", el.image)
+                img_product_img.setAttribute("alt", "Product image")
+                div_order_product.prepend(img_product_img)
+
+                document.querySelector(".order_list").prepend(div)
+                
+            }
+
+            // }
+
+            // return el;
+
+        })
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
         // Update Profile Details codes
 
         const form = document.getElementById("form")
@@ -491,18 +624,7 @@
             }
         }
 
-        // edit profile codes
-        function editItem() {
-
-            document.getElementById("first_name").disabled = false
-            document.getElementById("last_name").disabled = false
-            document.getElementById("mobileNumber").disabled = false
-            document.getElementById("address2").disabled = false
-            document.getElementById("zip_code").disabled = false
-            document.getElementById("state").disabled = false
-            document.getElementById("country").disabled = false
-
-        }
+        
 
        
 
@@ -662,75 +784,7 @@
 
         */
 
-        // Order Details Codes
-        const orders = JSON.parse(localStorage.getItem("orders")) ?? []
-        let items_count = 0;
-        orders.find(el => {
-
-            // for(let i=orders.length; i<orders.length-4; i++){
-
-            if (el.user_email === active_user.user_email) {
-
-                // items count
-                items_count++
-
-                // order page div alignment
-                // let div;
-                // let div_order_numer;
-                // let h1_order_id;
-                // let div_order_date;
-                // let p_order_color;
-                // let p_order_date;
-                // let div_order_product;
-                // let img_product_img;
-
-                const div = document.createElement("div")
-                div.setAttribute("class", "product")
-                div.addEventListener("click", () => {
-
-                    window.location.href = `order_tracker.html?id=${  el.order_id}`
-
-                })
-
-                const div_order_numer = document.createElement("div")
-                div_order_numer.setAttribute("class", "order_numer")
-                div.prepend(div_order_numer)
-
-                const h1_order_id = document.createElement("h2")
-                h1_order_id.innerText = `Order id: ${  el.order_id}`;
-                div_order_numer.prepend(h1_order_id)
-
-                const div_order_date = document.createElement("div")
-                div_order_date.setAttribute("class", "order_date")
-                div.append(div_order_date)
-
-                const p_order_color = document.createElement("p")
-                p_order_color.setAttribute("class", "order_color")
-                div_order_date.prepend(p_order_color)
-
-                const p_order_date = document.createElement("p")
-                p_order_date.innerText = `Shipped on ${  el.order_date}`;
-                div_order_date.append(p_order_date)
-
-                const div_order_product = document.createElement("div")
-                div_order_product.setAttribute("class", "order_product")
-                div.append(div_order_product)
-
-                const img_product_img = document.createElement("img")
-                img_product_img.setAttribute("class", "product_img")
-                img_product_img.setAttribute("src", el.image)
-                img_product_img.setAttribute("alt", "Product image")
-                div_order_product.prepend(img_product_img)
-
-                document.querySelector(".order_list").prepend(div)
-                
-            }
-
-            // }
-
-            // return el;
-
-        })
+        
 
         // product count
         const product_count = document.getElementById("product_count")
