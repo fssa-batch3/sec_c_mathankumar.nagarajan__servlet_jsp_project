@@ -40,7 +40,7 @@
         const paramsId = urlParams.get("order_id")
 
         const order_id = document.getElementById("order_id")
-        order_id.innerText = `Your order ID is:${  paramsId}`
+        //order_id.innerText = `Your order ID is:${  paramsId}`
 
         const check_status = document.getElementById("check_status")
         check_status.addEventListener("click", () =>{

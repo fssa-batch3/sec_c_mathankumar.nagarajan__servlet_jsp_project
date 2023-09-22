@@ -589,7 +589,7 @@ if (localStorage.getItem("stores")) {
             console.log(a_items);                               // view code
 
             div_store = document.createElement("div");
-            div_store.setAttribute("class", "store");
+            div_store.setAttribute("class", "store search_store");
             //console.log(div_store)
             a_items.append(div_store)                           // placeing place 
 

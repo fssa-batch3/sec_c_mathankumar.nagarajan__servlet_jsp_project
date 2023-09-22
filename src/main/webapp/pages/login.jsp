@@ -18,7 +18,7 @@
     
     <title>SpartansMT</title>
     
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/image/home/logo icon.png" alt="logo icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%=request.getContextPath() %>/assets/image/home/logo icon.png" alt="logo icon">
     
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
@@ -83,7 +83,7 @@
                         <label>
                             <input class="input-box" id="password" type="password" name="password"
                                 placeholder="Password"
-                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,}$" required></label>
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,}$" title="The password must be greater than 8 characters, It Should contains atleast one lowercase, one Uppercase, one number and one special character." required></label>
                     </div>
                     <hr>
                     <label>

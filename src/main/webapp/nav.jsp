@@ -29,9 +29,9 @@ if (userEmail == null) {
 <nav id="#homepage">
 	<img id="logo" src="https://iili.io/HyZGiwF.png" alt="logo">
 	<ul>
-		<li><a href="<%=request.getContextPath()%>/IndexPageStoreDetails">Home</a>
+		<li><a href="<%=request.getContextPath()%>/index.jsp">Home</a>
 		</li>
-		<li><a href="<%=request.getContextPath()%>/StorePageStoreDetails">Stores</a>
+		<li><a href="<%=request.getContextPath()%>/pages/store.jsp">Stores</a>
 		</li>
 		<li><a href="<%=request.getContextPath()%>/pages/offers.jsp">Offers</a>
 		</li>

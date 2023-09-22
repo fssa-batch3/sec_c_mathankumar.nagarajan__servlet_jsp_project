@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		RequestDispatcher dis = null;
-		
+
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 
@@ -46,19 +46,27 @@ public class LoginServlet extends HttpServlet {
 			userService.login(email, password);
 
 			user = userService.getUserByEmail(email);
-			if (user.getEmail().trim().equals(email.trim()) && user.getPassword().trim().equals(password.trim())) {
 
-				session.setAttribute("actUserEmail", user.getEmail());
-				request.setAttribute("success", "Successfully Logged In");
-				dis = request.getRequestDispatcher("index.jsp");
-				dis.forward(request, response);
-				
-			}else {
-				
-				request.setAttribute("error", "Enter Valid Email and Password");
+			if (user.getEmail() != null) {
+
+				if (user.getEmail().trim().equals(email.trim()) && user.getPassword().trim().equals(password.trim())) {
+
+					session.setAttribute("actUserEmail", user.getEmail());
+					request.setAttribute("success", "Successfully Logged In");
+					dis = request.getRequestDispatcher("index.jsp");
+					dis.forward(request, response);
+
+				} else {
+
+					request.setAttribute("error", "Enter Valid Email and Password");
+					dis = request.getRequestDispatcher("pages/login.jsp");
+					dis.forward(request, response);
+
+				}
+			} else {
+				request.setAttribute("error", "Enter Valid Email Address");
 				dis = request.getRequestDispatcher("pages/login.jsp");
 				dis.forward(request, response);
-				
 			}
 
 		} catch (ServiceException | DAOException | InvalidUserException e) {

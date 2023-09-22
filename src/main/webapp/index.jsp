@@ -45,9 +45,9 @@
 	if (error != null) {
 	%>
 	<script>
-				    let error = "<%=error%>";
-				    Notify.error(error);
-				</script>
+		let error = "<%=error%>";
+		Notify.error(error);
+	</script>
 	<%
 	}
 	%>
@@ -56,8 +56,7 @@
 	if (success != null) {
 	%>
 	<script>
-			    	let success = "<%=success%>
-		";
+		let success = "<%=success%>";
 		Notify.success(success);
 	</script>
 	<%
@@ -76,9 +75,9 @@
 		<button class="button">EXPLORE ALL STORES</button>
 	</a>
 
-	<h2 class="center">FOODCOURT</h2>
+	<h2 class="center display_none">FOODCOURT</h2>
 
-	<div class="stores">
+	<div class="stores display_none">
 		<img id="food-background" src="assets/image/home/food-background.jpg"
 			alt="store-image">
 		<div class="store1">
@@ -254,12 +253,12 @@
 
 	</div>
 	<!-- second foodcourt line end -->
-	<a href="pages/foodcourt/foodcourt.html">
+	<a href="pages/foodcourt/foodcourt.html" class="display_none">
 		<button class="button">EXPLORE ALL FOODCOURT</button>
 	</a>
-	<h2 class="center">MOVIES</h2>
+	<h2 class="center display_none">MOVIES</h2>
 
-	<div class="movie-list">
+	<div class="movie-list display_none">
 
 		<div>
 			<img class="movie-img" src="assets/image/home/wakanda.png"
@@ -290,12 +289,12 @@
 		</div>
 
 	</div>
-	<a href="pages/entertainment/entertainment.html">
+	<a href="pages/entertainment/entertainment.html" class="display_none">
 		<button class="button">EXPLORE ALL MOVIES</button>
 	</a>
-	<h2 class="center">OFFERS</h2>
+	<h2 class="center display_none">OFFERS</h2>
 
-	<div class="offers-home">
+	<div class="offers-home display_none">
 		<div class="offers-home-img">
 			<img src="assets/image/home/offer4.jpg" alt="offer-image"> <img
 				src="assets/image/home/offer1.jpg" alt="offer-image"> <img
@@ -317,7 +316,7 @@
 		</div>
 
 	</div>
-	<a href="pages/offer/offer.html">
+	<a href="pages/offer/offer.html" class="display_none">
 		<button class="button">EXPLORE ALL OFFERS</button>
 	</a>
 

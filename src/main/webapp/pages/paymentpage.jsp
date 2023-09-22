@@ -98,19 +98,19 @@
 
 						<div>
 							<label for="">Country <br> <input type="text"
-								id="country" class="address" name="country" required>
+								id="country" class="address" name="country" pattern="^[a-zA-Z ]+$" required>
 							</label>
 						</div>
 
 						<div>
 							<label for="">State <br> <input type="text"
-								id="state" class="address" name="state" required>
+								id="state" class="address" name="state" pattern="^[a-zA-Z ]+$" required>
 							</label>
 						</div>
 
 						<div>
 							<label for="">Zip code <br> <input type="number"
-								pattern="[0-9]{6}" id="zip_code" name="zipCode" class="address" required>
+								pattern="[0-9]{6}" min="100000" max="999999" id="zip_code" title="Please Enter Valid Zip code. It Should contains 6 numbers" name="zipCode" class="address" required>
 							</label>
 						</div>
 
@@ -200,9 +200,10 @@
 
 				</div>
 
-				<span>Discount code</span> <label id="discount" for=""> <input
-					type="text" name="" id="discount_code">
-					<button id="apply_btn">Apply</button>
+				<span style="display:none">Discount code</span> 
+				<label style="display:none" id="discount" for=""> <input
+					type="text" style="display:none" name="" id="discount_code">
+					<button style="display:none" id="apply_btn">Apply</button>
 				</label>
 
 				<div>
@@ -350,10 +351,8 @@
 			  })
 			}
 		
-		function displayProduct(product) {
+		function displayProduct(productData) {
 			
-			const productData = JSON.parse(product.substring(1));
-
 			totalPrice += productData.productPrice;
 			productIdArr.push(Number(paramsId));
             // console.log(totalPrice)

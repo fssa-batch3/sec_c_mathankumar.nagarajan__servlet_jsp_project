@@ -40,13 +40,14 @@ public class GetProductByProductId extends HttpServlet {
 
 		int productId = Integer.parseInt(request.getParameter("id"));
 		PrintWriter out = response.getWriter();
-		out.print(productId);
 		ProductService productService = new ProductService();
 		Product product = new Product();
 		try {
 			product = productService.getProductById(productId);
 			JSONObject productObj = new JSONObject(product);
-			out.print(productObj.toString());
+			out.write(productObj.toString());
+			
+			
 			
 		}catch(ServiceException | InvalidProductDetailsException | DAOException e) {
 			e.printStackTrace();

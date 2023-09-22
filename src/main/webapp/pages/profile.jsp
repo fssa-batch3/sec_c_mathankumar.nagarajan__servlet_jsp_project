@@ -362,7 +362,7 @@
         
         
         // Here is Create userId to Get the user Id via the ajax call (below mentioned)
-        let userId;
+        let userId = 0;
 		
        	// Getting Email from Input Box Value
        	const email = document.getElementById("email").value;
@@ -404,7 +404,7 @@
 			if(user.zipCode != null){
 				document.getElementById("zip_code").value = user.zipCode;
 			}
-			
+			getAllOrders();
         
 		}
 		
@@ -444,37 +444,17 @@
 				})
 		}
      	
+     	// Using GetProductByProductId Ajax will assign the image link
+     	// let imageLink = "";
      	
      	function displayOrders(order){
      		
+     		console.log(order)
      		
-     		order.forEach(e => {
+     		//if(order != ""){
+     		order.forEach((e,i) => {
      		
-     			
-     			console.log(e.orderedProducts)
-     			
-     			
-     			
-     		})
-     		
-     		
-     		
-     		
-     		
-     	}
-     	getAllOrders();
-     	
-     	
-     	
-        const orders = JSON.parse(localStorage.getItem("orders")) ?? []
-        
-        orders.find(el => {
-
-            // for(let i=orders.length; i<orders.length-4; i++){
-
-            if (el.user_email === active_user.user_email) {
-
-                // items count
+     			 // items count
                 items_count++
 
                 // order page div alignment
@@ -491,7 +471,7 @@
                 div.setAttribute("class", "product")
                 div.addEventListener("click", () => {
 
-                    window.location.href = `order_tracker.html?id=${  el.order_id}`
+                    window.location.href = "<%=request.getContextPath() %>/pages/ordertracker.jsp?id=" + e.orderId;
 
                 })
 
@@ -500,7 +480,7 @@
                 div.prepend(div_order_numer)
 
                 const h1_order_id = document.createElement("h2")
-                h1_order_id.innerText = `Order id: ${  el.order_id}`;
+                h1_order_id.innerText = "Order id:" + e.orderId;
                 div_order_numer.prepend(h1_order_id)
 
                 const div_order_date = document.createElement("div")
@@ -512,20 +492,71 @@
                 div_order_date.prepend(p_order_color)
 
                 const p_order_date = document.createElement("p")
-                p_order_date.innerText = `Shipped on ${  el.order_date}`;
+                p_order_date.innerText = "Shipped on " + e.orderDate;
                 div_order_date.append(p_order_date)
 
                 const div_order_product = document.createElement("div")
                 div_order_product.setAttribute("class", "order_product")
                 div.append(div_order_product)
-
+	
+                //console.log(e.orderedProducts[0].productId);
+               
+            
+     			
                 const img_product_img = document.createElement("img")
-                img_product_img.setAttribute("class", "product_img")
-                img_product_img.setAttribute("src", el.image)
+                img_product_img.setAttribute("class", "product_img img_link")
+              //  img_product_img.setAttribute("class", "img_link")
+                // img_product_img.setAttribute("src", imageLink)
                 img_product_img.setAttribute("alt", "Product image")
                 div_order_product.prepend(img_product_img)
 
+                getProductDetails(e.orderedProducts[0].productId,i);
+                
                 document.querySelector(".order_list").prepend(div)
+     			
+                
+     			
+     		})
+     		//}
+
+     		
+     	}
+     	
+     	 function getProductDetails(id,i) {
+ 			const url = "http://localhost:8080/spartansmt_web/GetProductByProductId?id=" + id;
+ 			axios.get(url)
+ 			  .then(function (response) {
+ 			    // handle success
+ 			    console.log(response.data);
+ 			    const product = response.data;
+ 			    displayProduct(product,i);
+ 			  })
+ 			  .catch(function (error) {
+ 			    // handle error
+ 			    console.log(error);
+ 			  })
+ 		}
+ 		
+ 		function displayProduct(productData,i) {
+ 			
+ 			console.log("i value : "+i);
+ 			document.querySelectorAll(".img_link")[i].setAttribute("src", productData.productImage);
+ 			console.log(productData.productImage);
+ 			
+ 		}
+     	
+     	
+     	
+     	/*
+        const orders = JSON.parse(localStorage.getItem("orders")) ?? []
+        
+        orders.find(el => {
+
+            // for(let i=orders.length; i<orders.length-4; i++){
+
+            if (el.user_email === active_user.user_email) {
+
+               
                 
             }
 
@@ -534,7 +565,7 @@
             // return el;
 
         })
-		
+		*/
 		
 		
 		

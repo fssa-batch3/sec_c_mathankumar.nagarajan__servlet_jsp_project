@@ -77,10 +77,8 @@
 			  })
 		}
 		
-		function displayProduct(product) {
+		function displayProduct(productData) {
 			
-			const productData = JSON.parse(product.substring(1));
-
 			
 			let div;
 	        let div_column;
