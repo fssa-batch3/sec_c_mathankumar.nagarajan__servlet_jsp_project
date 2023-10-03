@@ -244,6 +244,8 @@
 
 	<script>   
 	
+		const Cart = JSON.parse(localStorage.getItem("Cart")) ?? [];
+	
 		// Golbal Scope variable used to get ajax values
 		let userId;
 		let productIdArr = [];
@@ -316,7 +318,7 @@
 		// console.log("user: " + userId)
 
         /*
-        const Cart = JSON.parse(localStorage.getItem("Cart")) ?? []
+        
         const storess = JSON.parse(localStorage.getItem("stores"))*/  // END
 
         const url = window.location.search;                // ?name=Arun
@@ -354,6 +356,7 @@
 		function displayProduct(productData) {
 			
 			totalPrice += productData.productPrice;
+			
 			productIdArr.push(Number(paramsId));
             // console.log(totalPrice)
 
@@ -406,25 +409,16 @@
 		getProductDetails();
 
         }
-		// COMMENTED
-        /*else {
+        else {
             // console.log("dont")
 
             Cart.find(el => {
 
-                if (paramsId === el.user_email) {
+                if (paramsId === el.email) {
 
-                    storess.find(e => {
-
-                        if (e.value === el.store_value) {
-
-                            storeName = e.title
-
-                        }
-                        // return e;
-                    })
-
-                    totalPrice += Number(el.price) * el.quantity
+                	productIdArr.push(Number(el.productId));
+                	
+                    totalPrice += Number(el.productPrice) * el.quantity
 
                     // let div_order_items;
                     // let img_product_img;
@@ -440,7 +434,7 @@
                     // <img class="product_img" src="../../assets/image/stores/ivenus-apple/mobile (6).png" alt="product">
                     const img_product_img = document.createElement("img")
                     img_product_img.setAttribute("class", "product_img")
-                    img_product_img.setAttribute("src", el.image)
+                    img_product_img.setAttribute("src", el.productImage)
                     img_product_img.setAttribute("alt", "product_img")
                     div_order_items.prepend(img_product_img)
 
@@ -451,32 +445,35 @@
                     // <h4 id="order_title"></h4>
                     const h4_order_title = document.createElement("h4")
                     h4_order_title.setAttribute("id", "order_title")
-                    h4_order_title.innerText = el.title;
+                    h4_order_title.innerText = el.productTitle;
                     div.prepend(h4_order_title)
 
                     // <p>Store name: Iphones</p>
                     const p_store_name = document.createElement("p")
-                    p_store_name.innerText = `Storename:${  storeName}`;
+                    // p_store_name.innerText = `Storename:${  storeName}`;
                     div.append(p_store_name);
 
                     // <p>$121212</p>
                     const p_price = document.createElement("p")
-                    p_price.innerText = `₹${  el.price  } ` + `x` + ` ${  el.quantity}`
+                    p_price.innerHTML = "&#8377;" + el.productPrice + " x " + el.quantity;
                     div.append(p_price)
 
                     document.querySelector("#order_summary").append(div_order_items)
 
                 }
+                
                 // return el;
             })
+    		
+            console.log(productIdArr);
+	
+        }
 
-        } */ // END
-
-        /*console.log("print" + totalPrice)
+        console.log("print" + totalPrice)
         document.getElementById("subtotal").innerHTML = '&#8377;' + totalPrice;
         document.getElementById("total").innerHTML = '&#8377;' + totalPrice;
 
-        */
+        
         
         // get checkout btn
         const form = document.getElementById("form")
@@ -494,6 +491,7 @@
             
      } 
 
+        
             /*const orders = JSON.parse(localStorage.getItem("orders")) ?? []
 
             // if(order_id == )

@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="../assets/css/cart.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/cart.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@400;700&display=swap"
         rel="stylesheet">
@@ -94,8 +94,81 @@
     <!-- Footer starting -->
 	<jsp:include page="../footer.jsp"></jsp:include>
 	
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script>        
 	
-	<script>        // const user_email = localStorage.getItem("key")
+		
+		// Nav bar Cart Count
+		// Here is Getting Cart Array to the Local Stroage
+    	const Cart = JSON.parse(localStorage.getItem("Cart")) ?? [];
+		
+		// Here is Getting the <p> tag in HTML Using Id
+	    const cart_count = document.getElementById("cart_count");
+		
+    	let count = 0;
+    	Cart.find(e => {
+        	if (e.email === "<%=request.getSession(false).getAttribute("actUserEmail") %>") {
+            	count++
+        	}
+    	})
+		
+    	// Assigning a cart count to the cart_count element
+    	cart_count.innerText = Number(count);
+
+        
+        /* Here is Adding the Cart Count in the h3 tag
+           It is locatated in the cart page below the 
+           Product Details Heading.
+        */
+        document.getElementById("total_items").innerText = "Price (" + count + "  : Items)";
+        
+		
+        // Here is getting the user email using Jsp Scriptlet 
+        <%
+        	String email = (String) request.getSession(false).getAttribute("actUserEmail");
+        %>
+        
+     	// Getting user object using Ajax
+		function getUserDetails() {
+			const url = "http://localhost:8080/spartansmt_web/GetUserDetailsUsingEmail?email=<%=email %>";
+			axios.get(url)
+			  .then(function (response) {
+			    // handle success
+			    console.log(response.data);
+			    const user = response.data;
+			    displayUser(user);
+			  })
+			  .catch(function (error) {
+			    // handle error
+			    console.log(error);
+				})
+		}
+		
+		function displayUser(user) {
+			
+			document.getElementById("user-name-address").innerText = user.firstName + " " + user.lastName;
+		    document.getElementById("user-email-address").innerText = user.email;
+		    document.getElementById("user-address").innerText = user.address + ", " + user.state + ", " + user.country + ", " + user.zipCode;
+		    document.getElementById("user_mobile_number").innerText = user.phoneNumber;
+
+		    // document.getElementById("total_discount").innerText = `Your Total Savings on this order` + ` ₹ ${totalDiscount}`
+
+			
+		}
+        
+		// Here is Called the GetUserDetails Ajax Method
+		getUserDetails();
+        
+        
+        
+		
+		
+		
+		
+		
+		
+        
+		// const user_email = localStorage.getItem("key")
 
         // const user_email = localStorage.getItem("user_email");
         // const first_name = localStorage.getItem("first_name")
@@ -156,7 +229,8 @@
         // ]
 
         const produte_list = JSON.parse(localStorage.getItem("Cart"))
-        const user = JSON.parse(localStorage.getItem("active_user"))
+        
+        // - const user = JSON.parse(localStorage.getItem("active_user"))
 
         let totalValue = 0;
 
@@ -170,18 +244,19 @@
 
         for (let i = 0; i < produte_list.length; i++) {
 
-            if (produte_list[i].user_email === user.user_email) {
+            if (produte_list[i].email === "<%=request.getSession(false).getAttribute("actUserEmail") %>") {
 
                 // cart Product Quantity
                 const quantity = 1;
 
                 // total discount code for line 267 to 269
-                let discount = 0
-                discount = Number(produte_list[i].full_price) - Number(produte_list[i].price)
+                let discount = 0;
+                // discount = Number(produte_list[i].full_price) - Number(produte_list[i].price)
                 totalDiscount += discount
 
                 // total value code
-                totalValue += Number(produte_list[i].price) * quantity;
+                totalValue += Number(produte_list[i].productPrice) * quantity;
+                console.log(totalValue);
 
                 // total products in the cart page code
                 totalItems++
@@ -202,7 +277,7 @@
 
                 produte_img = document.createElement("img");
                 produte_img.setAttribute("class", "order-img");
-                produte_img.setAttribute("src", produte_list[i].image)
+                produte_img.setAttribute("src", produte_list[i].productImage)
                 // produte_img.setAttribute("alt",  produte_list[i]["produte_img"]["alt"])
                 div_order_summary.prepend(produte_img);
 
@@ -211,8 +286,8 @@
 
                 title = document.createElement("h1");
                 title.setAttribute("class", "product_value")
-                title.innerText = produte_list[i].title;
-                title.setAttribute("data-value", produte_list[i].value)
+                title.innerText = produte_list[i].productTitle;
+                title.setAttribute("data-value", produte_list[i].productId)
                 div_detalis.prepend(title);
 
                 p_special_price = document.createElement("p");
@@ -226,26 +301,26 @@
 
                 h6_rate = document.createElement("h6");
                 h6_rate.setAttribute("class", "rate");
-                h6_rate.innerText = `₹${produte_list[i].price}`;
-                h6_rate.setAttribute("data-keyword", produte_list[i].price)
+                h6_rate.innerHTML = "&#x20b9;" + produte_list[i].productPrice;
+                h6_rate.setAttribute("data-keyword", produte_list[i].productPrice)
 
                 div_column.prepend(h6_rate);
 
-                p_line_through = document.createElement("p");
-                p_line_through.setAttribute("class", "line-through");
-                p_line_through.innerText = `₹${produte_list[i].full_price}`;
-                p_line_through.setAttribute("data-full_price", produte_list[i].full_price)
-                div_column.append(p_line_through);
+                //p_line_through = document.createElement("p");
+                //p_line_through.setAttribute("class", "line-through");
+                // p_line_through.innerText = `₹${produte_list[i].full_price}`;
+                // p_line_through.setAttribute("data-full_price", produte_list[i].full_price)
+                //div_column.append(p_line_through);
 
-                p_green = document.createElement("p");
-                p_green.setAttribute("class", "green");
-                div_column.append(p_green);
+                //p_green = document.createElement("p");
+                //p_green.setAttribute("class", "green");
+                //div_column.append(p_green);
 
-                b = document.createElement("b")
-                b.setAttribute("class", "discount")
-                b.setAttribute("data-discount", produte_list[i].discount)
-                b.innerText = `(${produte_list[i].discount}%)`;
-                p_green.append(b)
+                //b = document.createElement("b")
+                //b.setAttribute("class", "discount")
+                //b.setAttribute("data-discount", produte_list[i].discount)
+                //b.innerText = `(${produte_list[i].discount}%)`;
+                //p_green.append(b)
 
                 h4 = document.createElement("h4");
                 h4.innerText = "Delivery FREE";
@@ -255,17 +330,17 @@
                 div_rating.setAttribute("class", "rating-line");
                 div_detalis.append(div_rating);
 
-                p = document.createElement("p");
-                p.innerText = "★";
-                div_rating.prepend(p);
+                //p = document.createElement("p");
+               //  p.innerText = "★";
+                //div_rating.prepend(p);
 
-                b = document.createElement("b")
-                b.innerText = produte_list[i].rating;
-                p.append(b)
+                //b = document.createElement("b")
+                // b.innerText = produte_list[i].rating;
+                //p.append(b)
 
-                h4_rating = document.createElement("h4");
-                h4_rating.innerText = `( ${produte_list[i].reviews} )`;
-                div_rating.append(h4_rating);
+                //h4_rating = document.createElement("h4");
+                // h4_rating.innerText = `( ${produte_list[i].reviews} )`;
+                //div_rating.append(h4_rating);
 
                 h3_add_more_items = document.createElement("h3");
                 h3_add_more_items.setAttribute("class", "add-more-items");
@@ -309,7 +384,7 @@
 
                 const span = document.createElement("input")
                 span.setAttribute("class", "qty")
-                span.setAttribute("value", quantity)
+                span.setAttribute("value", produte_list[i].quantity)
                 span.setAttribute("type", "text")
                 span.innerText = quantity;
                 label_number_of_items.append(span)
@@ -345,7 +420,7 @@
 
                         // console.log(produte_list[i])
 
-                        if (produte_list[i].user_email === user.user_email && produte_list[i].title === produte_list[j].title) {
+                        if (produte_list[i].email === "<%=request.getSession(false).getAttribute("actUserEmail") %>" && produte_list[i].productTitle === produte_list[j].productTitle) {
 
                             // console.log(produte_list[i])
 
@@ -361,13 +436,16 @@
 
                 })
 
-            }
+           }
 
         }
+            
+            
+            
 
         // Total value 
-        document.getElementById("totalValue").innerText = `₹ ${totalValue}`
-        document.getElementById("totalValue1").innerText = `₹ ${totalValue}`
+        document.getElementById("totalValue").innerHTML = "&#x20b9;" + totalValue;
+        document.getElementById("totalValue1").innerHTML = "&#x20b9;" + totalValue;
 
         // Cart Quantity Codes (+ and -)
 
@@ -391,23 +469,23 @@
                 // Total price (+)
                 const totalvalue = parseFloat(price_pr[i].dataset.keyword) * parseFloat(num_digit[i].value)
                 // console.log(totalvalue)
-                price_pr[i].innerText = `₹${totalvalue}`;
+                price_pr[i].innerHTML = "&#8377;" + totalvalue;
 
                 // Total full price (+)
-                const full_price_value = parseFloat(full_price[i].dataset.full_price) * parseFloat(num_digit[i].value)
-                full_price[i].innerText = `₹${full_price_value}`;
+                // const full_price_value = parseFloat(full_price[i].dataset.full_price) * parseFloat(num_digit[i].value)
+                // full_price[i].innerText = `₹${full_price_value}`;
 
                 // Total discount (%)
-                const discount_value = parseFloat(discount[i].dataset.discount) * parseFloat(num_digit[i].value)
-                discount[i].innerText = `(${discount_value}%)`
+                // const discount_value = parseFloat(discount[i].dataset.discount) * parseFloat(num_digit[i].value)
+                // discount[i].innerText = `(${discount_value}%)`
 
                 // Total product count 
-                document.getElementById("total_items").innerText = `Price ( ${totalItems} : Items)`
+                document.getElementById("total_items").innerText = "Price ( " + totalItems + " : Items)";
 
                 // Total price for all product
-                totalValue += parseFloat(price_pr[i].dataset.keyword)
-                document.getElementById("totalValue").innerText = `₹ ${totalValue}`
-                document.getElementById("totalValue1").innerText = `₹ ${totalValue}`
+                totalValue += parseFloat(price_pr[i].dataset.keyword);
+                document.getElementById("totalValue").innerHTML = "&#8377;" + totalValue;
+                document.getElementById("totalValue1").innerHTML = "&#8377;" + totalValue;
 
             })
 
@@ -423,39 +501,34 @@
 
                     // Total price (-)
                     const totalvalue = parseFloat(price_pr[i].dataset.keyword) * parseFloat(num_digit[i].value)
-                    console.log(totalvalue)
-                    price_pr[i].innerText = `₹${totalvalue}`;
+                    // console.log(totalvalue)
+                    price_pr[i].innerHTML = "&#8377;" + totalvalue;
 
                     // Total full price (-)
-                    const full_price_value = parseFloat(full_price[i].dataset.full_price) * parseFloat(num_digit[i].value)
-                    full_price[i].innerText = `₹${full_price_value}`;
+                    // const full_price_value = parseFloat(full_price[i].dataset.full_price) * parseFloat(num_digit[i].value)
+                    // full_price[i].innerText = `₹${full_price_value}`;
 
                     // Total discount (%)
-                    const discount_value = parseFloat(discount[i].dataset.discount) * parseFloat(num_digit[i].value)
-                    discount[i].innerText = `(${discount_value}%)`
+                    // const discount_value = parseFloat(discount[i].dataset.discount) * parseFloat(num_digit[i].value)
+                    // discount[i].innerText = `(${discount_value}%)`
 
                     // Total product count ++
-                    document.getElementById("total_items").innerText = `Price ( ${totalItems} : Items)`
+                    document.getElementById("total_items").innerText = "Price ( " + totalItems +" : Items)";
 
                     // Total price for all product
-                    totalValue -= parseFloat(price_pr[i].dataset.keyword)
-                    document.getElementById("totalValue").innerText = `₹ ${totalValue}`
-                    document.getElementById("totalValue1").innerText = `₹ ${totalValue}`
+                    totalValue -= parseFloat(price_pr[i].dataset.keyword);
+                    document.getElementById("totalValue").innerHTML = "&#8377;" + totalValue;
+                    document.getElementById("totalValue1").innerHTML = "&#8377;" + totalValue;
 
                 }
 
             })
 
         }
+        
 
-        document.getElementById("user-name-address").innerText = `${user.first_name} ${user.last_name}`
-        document.getElementById("user-email-address").innerText = user.user_email
-        document.getElementById("user-address").innerText = user.address
-        document.getElementById("user_mobile_number").innerText = user.mobile_number
-
-        document.getElementById("total_discount").innerText = `Your Total Savings on this order` + ` ₹ ${totalDiscount}`
-
-        document.getElementById("total_items").innerText = `Price ( ${totalItems} : Items)`
+        
+       
 
         // Place Order Button Codes for JS
 
@@ -472,11 +545,12 @@
 
             produte_list.find(e => {
 
-                if (e.user_email === user.user_email) {
+                if (e.email === "<%=request.getSession(false).getAttribute("actUserEmail")%>") {
 
                     for (let i = 0; i < num_digit.length; i++) {
                         // num_digit[i].value
-                        if (e.value === product_value[i].dataset.value) {
+                        console.log(e);
+                        if (e.productId == product_value[i].dataset.value) {
 
                             e.quantity = Number(num_digit[i].value)
 
@@ -484,15 +558,15 @@
 
                             break;
 
-                            // console.log(e);
+                            //console.log(e);
                         }
 
                     }
 
-                    window.location.href = `../../pages/cart/payment-page.html?id=${user.user_email}`
+                    window.location.href = `<%=request.getContextPath() %>/pages/paymentpage.jsp?id=<%=request.getSession(false).getAttribute("actUserEmail")%>`
 
                 }
-                // return e;
+                
             })
 
         })
@@ -506,22 +580,7 @@
 
         document.querySelector("#place-order-container").append(a_tag)
 
-        // cart icon count code
-
-        const Cart = JSON.parse(localStorage.getItem("Cart")) ?? []
-        const active_user = JSON.parse(localStorage.getItem("active_user"))
-        const cart_count = document.getElementById("cart_count")
-        let count = 0;
-
-        Cart.find(e => {
-            if (e.user_email === active_user.user_email) {
-                count++
-            }
-            // return e;
-        })
-        console.log(count)
-
-        cart_count.innerText = count
+        
 
         // Empty Cart Codes
         if (Number(totalValue) === 0) {
@@ -535,8 +594,7 @@
             document.querySelector("footer").style.display = "none";
 
             document.getElementById("showNow_btn").addEventListener("click", () => {
-                console.log(1)
-                window.location.href = "../home/home.html";
+                window.location.href = "<%=request.getContextPath()%>/index.jsp";
             })
 
         }

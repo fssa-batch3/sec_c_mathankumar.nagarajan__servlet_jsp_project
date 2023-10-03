@@ -31,8 +31,8 @@
 </head>
 <body>
 
-	<%!public static final String GET_PRODUCTS_BY_ID_SERVLET = "GetProductsByStoreId";%>
-	<%!public static final String GET_STORE_DETAILS_SERVLET = "GetStoreDetailsServlet";%>
+	<%!public static final String GET_PRODUCTS_BY_ID_SERVLET = "GetAllProductDetailsUsingStoreId";%>
+	<%!public static final String GET_STORE_DETAILS_SERVLET = "GetAllStoreDetailsUserSide";%>
 
 	<nav>
 
@@ -48,7 +48,7 @@
 			</div>
 
 			<div>
-				<span id="profile">Profile</span> <a href="../login/login.html">
+				<span id="profile">Profile</span> <a href="<%=request.getContextPath() %>/LogoutServlet">
 					<i class="fa-solid fa-right-from-bracket logout"></i>
 				</a>
 			</div>
@@ -169,19 +169,19 @@
 					<tr>
 						<td class="label">Title:</td>
 						<td class="inputs"><input type="text" name="storeTitle"
-							id="title" placeholder="Enter Store Name"></td>
+							id="title" placeholder="Enter Store Name" pattern="^[a-zA-Z0-9 ]+$" required="required"></td>
 					</tr>
 
 					<tr>
 						<td class="label">Category:</td>
 						<td class="inputs"><input type="text" name="storeCategory"
-							id="category" placeholder="Enter Store Category"></td>
+							id="category" placeholder="Enter Store Category" pattern="^[a-zA-Z ]+$" required="required"></td>
 					</tr>
 
 					<tr>
 						<td class="label">Store logo URL:</td>
 						<td class="inputs"><input type="url" name="storeLogo"
-							id="image" placeholder="Enter Store Logo Url"></td>
+							id="image" placeholder="Enter Store Logo Url" required="required"></td>
 					</tr>
 
 					<!-- <tr>
@@ -220,19 +220,19 @@
 					<tr>
 						<td class="label">Title:</td>
 						<td class="inputs"><input type="text" name="storeTitle"
-							id="title title1"  placeholder="Enter Store Name"></td>
+							id="title title1"  placeholder="Enter Store Name" pattern="^[a-zA-Z ]+$" required="required"></td>
 					</tr>
 
 					<tr>
 						<td class="label">Category:</td>
 						<td class="inputs"><input type="text" name="storeCategory"
-							id="category category1" placeholder="Enter Store Category"></td>
+							id="category category1" placeholder="Enter Store Category" pattern="^[a-zA-Z ]+$" required="required"></td>
 					</tr>
 
 					<tr>
 						<td class="label">Store logo URL:</td>
 						<td class="inputs"><input type="url" name="storeLogo"
-							id="image image1" placeholder="Enter Store Logo Url"></td>
+							id="image image1" placeholder="Enter Store Logo Url" required="required"></td>
 					</tr>
 
 					<!-- <tr>

@@ -243,11 +243,12 @@ h5 {
     height: 20px;
     text-align: center;
     font-weight: bolder;
-    /* border: 2px solid black; */
-    /* background-color: aqua; */
+    /* border: 2px solid black; 
+    background-color: aqua; */
     border-radius: 100%;
     position: absolute;
     font-size: 18px;
-    right: 80px;
+    right: 60px;
     top: 10px;
+    
 }

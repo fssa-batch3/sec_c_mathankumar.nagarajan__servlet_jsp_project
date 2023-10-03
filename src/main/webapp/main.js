@@ -557,11 +557,13 @@ const stores = [
   },
 ];
 
+/*
 if (localStorage.getItem("stores")) {
   console.log("Working");
 } else {
   localStorage.setItem("stores", JSON.stringify(stores));
 }
+*/
 
 	function getAllStores() {
 			const url = "http://localhost:8080/spartansmt_web/GetStoreDetailsServlet";
@@ -583,7 +585,7 @@ if (localStorage.getItem("stores")) {
 			for(let i=0; i<10; i++) {
 				
 			a_items = document.createElement("a");              // create tage
-            a_items.setAttribute("href", `http://localhost:8080/spartansmt_web/GetAllProductDetailsUsingStoreId?id=${storeArr[i].id}`);
+            a_items.setAttribute("href", `http://localhost:8080/spartansmt_web/GetProductsByStoreId?id=${storeArr[i].id}`);
             // adding class or same attribute
 
             console.log(a_items);                               // view code

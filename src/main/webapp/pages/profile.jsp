@@ -11,12 +11,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="../assets/css/profile.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/profile.css">
 
 <title>SpartansMT</title>
 
 <link rel="icon" type="image/png" sizes="32x32"
-	href="../assets/image/home/logo icon.png" alt="logo icon">
+	href="<%=request.getContextPath() %>/assets/image/home/logo icon.png" alt="logo icon">
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
@@ -27,17 +27,53 @@
 	integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
 	crossorigin="anonymous" referrerpolicy="no-referrer">
 
+<!-- Notify CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.css">
 
+<!-- Notify Js script file -->
+<script
+	src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js"> </script>
 
 
 </head>
 
 <body>
 
-	
+	<!-- Notify Alert -->
+	<%
+	String success = (String) request.getAttribute("success");
+	String error = (String) request.getAttribute("error");
+	%>
+
+
+	<%
+	if (error != null) {
+	%>
+	<script>
+		let error = "<%=error%>";
+		Notify.error(error);
+	</script>
+	<%
+	}
+	%>
+
+	<%
+	if (success != null) {
+	%>
+	<script>
+		let success = "<%=success%>";
+		Notify.success(success);
+	</script>
+	<%
+	}
+	%>
+
+
 
 	<%
 	String userEmail = (String) request.getSession().getAttribute("actUserEmail");
+	if (userEmail != null) {
 	%>
 
 	<header id="profile_page">
@@ -45,7 +81,7 @@
 		<div class="profile">
 
 			<div>
-				<img src="../assets/image/services/buildings.jpg" alt="User Profile">
+				<img src="<%=request.getContextPath() %>/assets/image/services/buildings.jpg" alt="User Profile">
 				<h3 id="user_name"></h3>
 
 			</div>
@@ -53,8 +89,7 @@
 			<br>
 
 			<ul>
-				<a
-					href="<%=request.getContextPath()%>/pages/profile.jsp?id=profile">
+				<a href="<%=request.getContextPath()%>/pages/profile.jsp?id=profile">
 					<menu id="btn_profile" class="active">Profile
 					</menu>
 				</a>
@@ -84,51 +119,57 @@
 				</a>
 			</div>
 
-			<form id="form">
+			<form id="form"
+				action="<%=request.getContextPath()%>/UpdateUserDetails"
+				method="post">
 
 				<div class="name">
 					<div>
 						<label for="first_name">First name</label> <br> <input
-							type="text" id="first_name" class="two_input" name="firstName" disabled>
+							type="text" id="first_name" class="two_input" name="firstName"
+							disabled>
 					</div>
 					<div>
 						<label for="last_name">Last name</label> <br> <input
-							type="text" id="last_name" name="lastName" class="two_input" disabled>
+							type="text" id="last_name" name="lastName" class="two_input"
+							disabled>
 					</div>
 				</div>
 
 				<div>
-					<label for="email">Email</label> <br> <input type="email" name="email" value="<%=userEmail %>"
-						id="email" class="one_input" disabled>
+					<label for="email">Email</label> <br> <input type="email"
+						name="email" value="<%=userEmail%>" id="email" class="one_input"
+						disabled>
 				</div>
 
 				<div>
 					<label for="address">Mobile number</label> <br> <input
-						id="mobileNumber" type="tel" pattern="[789][0-9]{9}" name="mobileNumber" class="one_input"
-						required disabled>
+						id="mobileNumber" type="tel" pattern="[789][0-9]{9}"
+						name="mobileNumber" class="one_input" required disabled>
 				</div>
 
 				<div>
 					<label for="address2">Address</label> <br> <input
-						id="address2" type="text" class="one_input" required disabled>
+						id="address2" type="text" class="one_input" name="address"
+						required disabled>
 				</div>
 
 				<div class="name">
 
 					<div>
 						<label for="country">Country</label> <br> <input id="country"
-							type="text" class="three_input" required disabled>
+							type="text" name="country" pattern="^[a-zA-Z ]+$" class="three_input" required disabled>
 					</div>
 
 					<div>
 						<label for="state">State</label> <br> <input id="state"
-							type="text" class="three_input" required disabled>
+							type="text" name="state" pattern="^[a-zA-Z ]+$" class="three_input" required disabled>
 					</div>
 
 					<div>
 						<label for="zip_code" class="three_input">Zip Code</label> <br>
-						<input id="zip_code" type="number" pattern="[0-9]{6}" required
-							disabled>
+						<input id="zip_code" name="zipCode" type="number" pattern="[0-9]{6}" min="100000" max="999999"
+							pattern="[0-9]{6}" required disabled>
 					</div>
 
 				</div>
@@ -137,8 +178,8 @@
 					<button id="edit" onclick="editItem()" type="button">Edit
 						Profile</button>
 					<button id="update" type="submit">Update Profile</button>
-					<button onclick="deleteItem()" type="button">Delete
-						Profile</button>
+					<!-- <button onclick="deleteItem()" type="button">Delete
+						Profile</button> -->
 
 				</div>
 
@@ -321,6 +362,15 @@
 		</div>
 
 	</header>
+	<%
+	} else {
+	%>
+	<script>
+		window.location.href = "<%=request.getContextPath()%>/pages/login.jsp";
+	</script>
+	<%
+	}
+	%>
 
 	<!-- ajax Script Link -->
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -471,7 +521,7 @@
                 div.setAttribute("class", "product")
                 div.addEventListener("click", () => {
 
-                    window.location.href = "<%=request.getContextPath() %>/pages/ordertracker.jsp?id=" + e.orderId;
+                    window.location.href = "<%=request.getContextPath()%>/pages/ordertracker.jsp?id=" + e.orderId;
 
                 })
 
@@ -503,14 +553,16 @@
                
             
      			
-                const img_product_img = document.createElement("img")
-                img_product_img.setAttribute("class", "product_img img_link")
-              //  img_product_img.setAttribute("class", "img_link")
+                const img_product_img = document.createElement("h2")
+                //img_product_img.setAttribute("class", "product_img img_link")
+              	img_product_img.innerText = "Ordered Product: " + e.orderedProducts.length;
+                // img_product_img.setAttribute("class", "img_link")
                 // img_product_img.setAttribute("src", imageLink)
-                img_product_img.setAttribute("alt", "Product image")
+                
+                // img_product_img.setAttribute("alt", "Product image")
                 div_order_product.prepend(img_product_img)
 
-                getProductDetails(e.orderedProducts[0].productId,i);
+                //getProductDetails(e.orderedProducts[0].productId,i);
                 
                 document.querySelector(".order_list").prepend(div)
      			
@@ -539,9 +591,7 @@
  		
  		function displayProduct(productData,i) {
  			
- 			console.log("i value : "+i);
  			document.querySelectorAll(".img_link")[i].setAttribute("src", productData.productImage);
- 			console.log(productData.productImage);
  			
  		}
      	

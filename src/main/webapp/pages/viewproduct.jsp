@@ -34,6 +34,8 @@
 
 <body>
 
+	
+
 	<jsp:include page="../nav.jsp"></jsp:include>
 
 	<div class="view-product">
@@ -59,6 +61,9 @@
     const urlParams = new URLSearchParams(url);        // converting string into key value pair
     const paramsId = urlParams.get("id")             // return value of the "name" key
     console.log(paramsId);
+    
+    // Below is Getting the Object from getProductDetails Ajax method
+    let product = {};
 	
     // below function to get the product details via db
     
@@ -79,6 +84,8 @@
 		
 		function displayProduct(productData) {
 			
+			// Here is Assigning the productDate obj to product obj
+			product = productData;
 			
 			let div;
 	        let div_column;
@@ -208,11 +215,82 @@
 
 	        document.querySelector("div.view-product").append(div_product_img);
 	        document.querySelector("div.view-product").append(div);
+	        
+	        
+	     	// Add to Cart Codes Below Written
+			const btn_cart = document.getElementById("btn_cart")
+	        btn_cart.addEventListener("click", el => {
+	        	
+	        	addCart(el);
+
+	        })
+	        
 
 			
 		}
 		
 		getProductDetails();
+		
+		
+		function addCart(el){
+			
+			console.log(product)
+
+            //const user = JSON.parse(localStorage.getItem("active_user"))
+
+            const addCart = JSON.parse(localStorage.getItem("Cart")) ?? [];
+
+            let check;
+
+            addCart.find(e => {
+				
+            	if (Number(e.productId) === Number(paramsId) && e.email === "<%=request.getSession(false).getAttribute("actUserEmail") %>") {
+                    return check = 1;
+                }
+        
+                check = 0;
+                //return e
+            })
+
+            if (check === 1) {
+                alert("already added")
+            }
+            else {
+            	
+            	let productObj = {};
+            	
+            	productObj.productId = product.productId;
+            	productObj.productImage = product.productImage;
+            	productObj.productPrice = product.productPrice;
+            	productObj.productTitle = product.productTitle;
+            	productObj.storeId = product.storeId;
+            	productObj.quantity = 1;
+            	productObj.email = "<%= request.getSession(false).getAttribute("actUserEmail") %>";
+
+                addCart.push(productObj);
+                localStorage.setItem("Cart", JSON.stringify(addCart));
+
+                alert("added")
+                location.reload(1)
+
+            }
+			
+		}
+		
+		// cart count for nav bar
+
+        const Cart = JSON.parse(localStorage.getItem("Cart")) ?? [];
+        const cart_count = document.getElementById("cart_count");
+        let count = 0;
+	
+        Cart.find(e => {
+            if (e.email === "<%=request.getSession(false).getAttribute("actUserEmail") %>") {
+                count++
+            }
+        })
+		
+        cart_count.innerText = Number(count);
+		
 	
 	</script>
 

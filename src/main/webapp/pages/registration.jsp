@@ -82,8 +82,7 @@
 
 					<!-- Change Address to Phone Number -->
 
-					<label> Phone number<br> <input type="tel"
-						pattern="[6789][0-9]{9}" id="address" required name="phonenumber"
+					<label> Phone number<br> <input type="number" title="Please enter valid phone number" min="6000000000" max="9999999999"  id="address" required name="phonenumber"
 						class="input"></label>
 				</div>
 

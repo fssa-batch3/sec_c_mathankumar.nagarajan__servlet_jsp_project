@@ -2,6 +2,7 @@ package com.fssa.spartansmt.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -57,7 +58,7 @@ public class RegistrationServlet extends HttpServlet {
 
 			}
 
-		} catch (DAOException | InvalidUserException | ServiceException e) {
+		} catch (DAOException | InvalidUserException | ServiceException | SQLException e) {
 			
 			e.getStackTrace();
 			request.setAttribute("error", e.getMessage());

@@ -53,6 +53,11 @@ hr {
     width: 90%;
 }
 
+.h1{
+    font-size: 40px;
+    font-weight: bold;
+}
+
 #order-summary-word {
     /* color: red; */
     text-align: center;
@@ -161,12 +166,12 @@ hr {
 }
 
 #align-details {
-    margin-top: 80px;
+    margin-top: 45px;
     margin-left: 50px;
 }
 
 #align-details2 {
-    margin-top: 80px;
+    margin-top: 50px;
 }
 
 .price-details div h1 {
@@ -231,7 +236,7 @@ hr {
     border-radius: 100%;
     position: absolute;
     font-size: 18px;
-    right: 77px;
+    right: 60px;
     top: 0px;
 }
 

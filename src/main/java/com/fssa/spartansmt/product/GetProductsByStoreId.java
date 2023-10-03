@@ -44,7 +44,7 @@ public class GetProductsByStoreId extends HttpServlet {
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}
-		RequestDispatcher dis = request.getServletContext().getRequestDispatcher("/pages/adminproduct.jsp");
+		RequestDispatcher dis = request.getServletContext().getRequestDispatcher("/pages/product.jsp");
 		dis.forward(request, response);
 
 	}

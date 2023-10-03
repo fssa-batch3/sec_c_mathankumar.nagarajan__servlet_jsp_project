@@ -583,7 +583,7 @@ if (localStorage.getItem("stores")) {
 			for(let store of storeArr) {
 				
 			a_items = document.createElement("a");              // create tage
-            a_items.setAttribute("href", `http://localhost:8080/spartansmt_web/GetAllProductDetailsUsingStoreId?id=${store.id}`);
+            a_items.setAttribute("href", `http://localhost:8080/spartansmt_web/GetProductsByStoreId?id=${store.id}`);
             // adding class or same attribute
 
             console.log(a_items);                               // view code

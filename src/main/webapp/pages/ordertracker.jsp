@@ -112,12 +112,13 @@
 			    console.log(error);
 				})
 		}
-        
+      	let i=0;
         function displayOrders(order) {
+        	
         	
         	 // payment Option
             const payment_option = document.getElementById("payment_option")
-            payment_option.innerText = order.totalPrice;
+            payment_option.innerText = order.paymentOption;
 
             // order id
             let order_id = document.getElementById("order_id")
@@ -127,17 +128,56 @@
             order_id.innerText = "Order ID: " + order.orderId;
 
             const order_date = document.getElementById("order_date")
-            order_date.innerText = "Order Date: " + order.orderId;
+            order_date.innerText = "Order Date: " + order.orderDate;
 
             const estimated_date = document.getElementById("estimated_date")
-            estimated_date.innerText = "Estimated delivery: " + order.orderedDate;
+            estimated_date.innerText = "Estimated delivery: " + order.orderDate;
 
             // Total Price
             price += Number(order.totalPrice);
             const total_price = document.getElementById("total_price")
-            total_price.innerText = "Total Price: ₹ " + order.totalPrice;
+            total_price.innerText = "Total Price: " + order.totalPrice;
+            
+            order.orderedProducts.forEach(ele => {
+            	 getProductDetails(ele.productId, order);
+            })
+            
+           
+           
+            
 
-            // Order Items Div Created Codes
+
+            // address and mobile number code using active user
+            const mobile_number = document.getElementById("mobile_number")
+            //mobile_number.innerText = e.mobile_number
+
+            // ADDRESS
+            const address = document.getElementById("address")
+            address.innerText = order.address + ", " + order.state + ", " + order.country + ", " + order.zipCode;
+
+            
+        	
+        	
+        }
+        
+        function getProductDetails(id, order) {
+ 			const url = "http://localhost:8080/spartansmt_web/GetProductByProductId?id=" + id;
+ 			axios.get(url)
+ 			  .then(function (response) {
+ 			    // handle success
+ 			    console.log(response.data);
+ 			    const product = response.data;
+ 			    displayProduct(product, order);
+ 			  })
+ 			  .catch(function (error) {
+ 			    // handle error
+ 			    console.log(error);
+ 			  })
+ 		}
+        
+ 		function displayProduct(product, order) {
+        	
+        	// Order Items Div Created Codes
 
             // let div_order_items;
             // let div_order_img;
@@ -157,7 +197,7 @@
 
             const img = document.createElement("img")
             img.setAttribute("class", "img_link_1")
-           // img.setAttribute("src", order.orderedProduct[0].pr)
+            img.setAttribute("src", product.productImage)
             img.setAttribute("alt", "Product image")
             div_order_img.prepend(img)
 
@@ -170,11 +210,11 @@
 
             h3 = document.createElement("h3")
             h3.setAttribute("class", "title_h3")
-            //h3.innerText = .title;
+            h3.innerText = product.productTitle;
             div.prepend(h3)
 
             p = document.createElement("p")
-            // p.innerText = "Ordered via: ";
+            p.innerText = "Ordered via: " + product.storeId;
             div.append(p)
 
             const b = document.createElement("b")
@@ -187,54 +227,30 @@
 
             h3 = document.createElement("h3")
             h3.setAttribute("class",  "price_h3")
-            h3.innerText = `₹${  e.price}`;
+            h3.innerText = product.productPrice;
             div_order_price.prepend(h3)
 
             p = document.createElement("p")
-            p.innerText = `Qty: ${  e.quantity}`
+            p.innerText = "Qty: " + order.orderedProducts[i].quantity;
             div_order_price.append(p)
 
             document.querySelector("#orders_div").append(div_order_items)
-
-            // address and mobile number code using active user
-            const mobile_number = document.getElementById("mobile_number")
-            mobile_number.innerText = e.mobile_number
-
-            // ADDRESS
-            const address = document.getElementById("address")
-            address.innerText = `${e.address  }, ${  e.state  }, ${  e.country  }, ${  e.zip_code  }.`
-
-            getProductDetails(order.orderId,i)
-        	
+            i++;
         	
         }
         
-        function getProductDetails(id,i) {
- 			const url = "http://localhost:8080/spartansmt_web/GetProductByProductId?id=" + id;
- 			axios.get(url)
- 			  .then(function (response) {
- 			    // handle success
- 			    console.log(response.data);
- 			    const product = response.data;
- 			    displayProduct(product,i);
- 			  })
- 			  .catch(function (error) {
- 			    // handle error
- 			    console.log(error);
- 			  })
- 		}
  		
- 		function displayProduct(product,i) {
+ 		//function displayProduct(product) {
  			
  			//const productData = JSON.parse(product.substring(1));
- 			console.log("i value : "+i);
- 			document.querySelectorAll(".img_link_1")[i].setAttribute("src", product.productImage);
- 			document.querySelectorAll(".title_h3")[i].innerText = (product.productTitle);
- 			document.querySelectorAll(".price_h3")[i].innerText = (product.price);
+ 			//console.log("i value : "+i);
+ 			//document.querySelectorAll(".img_link_1")[i].setAttribute("src", product.productImage);
+ 			//document.querySelectorAll(".title_h3")[i].innerText = (product.productTitle);
+ 			//document.querySelectorAll(".price_h3")[i].innerText = (product.price);
  			
- 			console.log(productData.productImage);
+ 			//console.log(productData.productImage);
  			
- 		}
+ 		//}
         
         getOrder();
 

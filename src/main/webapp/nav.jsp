@@ -8,13 +8,13 @@ if (userEmail == null) {
 <nav id="#homepage">
 	<img id="logo" src="https://iili.io/HyZGiwF.png" alt="logo">
 	<ul>
-		<li>Home</li>
-		<li>Stores</li>
-		<li>Offers</li>
-		<li>Entertainment</li>
-		<li>Foodcourt</li>
-		<li>Services</li>
-		<li>Cart</li>
+		<li onclick="login()">Home</li>
+		<li onclick="login()">Stores</li>
+		<li onclick="login()">Offers</li>
+		<li onclick="login()">Entertainment</li>
+		<li onclick="login()">Foodcourt</li>
+		<li onclick="login()">Services</li>
+		<li onclick="login()">Cart</li>
 		<li><a id="signup"
 			href="<%=request.getContextPath()%>/pages/login.jsp">Sign In</a></li>
 	</ul>
@@ -29,8 +29,7 @@ if (userEmail == null) {
 <nav id="#homepage">
 	<img id="logo" src="https://iili.io/HyZGiwF.png" alt="logo">
 	<ul>
-		<li><a href="<%=request.getContextPath()%>/index.jsp">Home</a>
-		</li>
+		<li><a href="<%=request.getContextPath()%>/index.jsp">Home</a></li>
 		<li><a href="<%=request.getContextPath()%>/pages/store.jsp">Stores</a>
 		</li>
 		<li><a href="<%=request.getContextPath()%>/pages/offers.jsp">Offers</a>
@@ -46,6 +45,8 @@ if (userEmail == null) {
 		<li><a href="<%=request.getContextPath()%>/pages/cart.jsp"> <i
 				id="cart_icon" class="material-symbols-outlined">shopping_cart</i>
 		</a></li>
+		
+		<p id="cart_count"></p>
 
 		<!-- <p id="cart_count"></p> -->
 		<li class="dropdown"><i class="material-symbols-outlined">expand_more</i>
@@ -54,7 +55,8 @@ if (userEmail == null) {
 					<p>
 						<i class="material-symbols-outlined">person</i> Profile
 					</p>
-				</a> <a href="<%=request.getContextPath() %>/pages/profile.jsp?id=orders">
+				</a> <a
+					href="<%=request.getContextPath()%>/pages/profile.jsp?id=orders">
 					<p>
 						<i class="material-symbols-outlined">shopping_bag</i> My Orders
 					</p>
@@ -75,3 +77,10 @@ if (userEmail == null) {
 <%
 }
 %>
+
+<script>
+	function login(){
+	let error = "Please Login Your Account";
+	Notify.error(error);
+	}
+</script>

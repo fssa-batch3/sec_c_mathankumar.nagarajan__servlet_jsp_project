@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fssa.spartansmt.exception.DAOException;
 import com.fssa.spartansmt.exception.InvalidOrderDetailsException;
 import com.fssa.spartansmt.exception.InvalidUserException;
+import com.fssa.spartansmt.logger.Logger;
 import com.fssa.spartansmt.model.Order;
 import com.fssa.spartansmt.model.OrderedProduct;
 import com.fssa.spartansmt.service.OrderService;
@@ -43,13 +44,24 @@ public class PlaceOrderServlet extends HttpServlet {
 		double totalPrice = Double.parseDouble(request.getParameter("totalPrice"));
 		String paymentOption = request.getParameter("paymentOption");
 		
-		int productId = Integer.parseInt(request.getParameter("productIdArr"));
 		
-		orderedProductList.add(new OrderedProduct(productId, 1));
+		
+		
+		
 				
 		
 		try {
 			
+			String strProductId = request.getParameter("productIdArr");
+			Logger.info(strProductId);
+			if(strProductId.length() == 1) {
+				int productId = Integer.parseInt(strProductId);
+				orderedProductList.add(new OrderedProduct(productId, 1));
+			}else {
+				
+			}
+			
+
 			Order order = new Order(userId, paymentOption, totalPrice, LocalDate.now(), orderedProductList, address, country, state, zipCode);
 			orderService.placeOrder(order);
 			response.sendRedirect(request.getContextPath() + "/pages/confirmorder.jsp");

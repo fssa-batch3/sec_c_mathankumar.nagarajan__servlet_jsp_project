@@ -62,6 +62,7 @@ public class AddStoreDetailsServlet extends HttpServlet {
 			
 		}catch (DAOException | InvalidStoreDetailsException e) {
 			e.getMessage();
+			
 		}
 		
 //		RequestDispatcher dis = request.getServletContext().getRequestDispatcher("/GetStoreDetailsServlet");

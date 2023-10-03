@@ -30,7 +30,7 @@
 </head>
 <body>
 
-	<%!public static final String GET_ALL_STORE_DETAILS = "GetStoreDetailsServlet";%>
+	<%!public static final String GET_ALL_STORE_DETAILS = "GetAllStoreDetailsUserSide";%>
 
 	<nav>
 
@@ -163,13 +163,13 @@
 					<tr>
 						<td class="label">Title :</td>
 						<td class="inputs"><input name="productTitle" type="text"
-							id="product_title" required></td>
+							id="product_title" pattern="^[a-zA-Z0-9 ]+$" required></td>
 					</tr>
 
 					<tr>
 						<td class="label">Price :</td>
 						<td class="inputs"><input name="productPrice" type="number"
-							step="0.01" id="price" required></td>
+							step="0.01" id="price" min="1" required></td>
 					</tr>
 
 					<tr>
@@ -206,13 +206,13 @@
 					<tr>
 						<td class="label">Title :</td>
 						<td class="inputs"><input name="productTitle" type="text"
-							id="product_title" required></td>
+							id="product_title" pattern="^[a-zA-Z0-9 ]+$" required></td>
 					</tr>
 
 					<tr>
 						<td class="label">Price :</td>
 						<td class="inputs"><input name="productPrice" type="number"
-							step="0.01" id="price" required></td>
+							step="0.01" id="price" min="1" required></td>
 					</tr>
 
 					<tr>

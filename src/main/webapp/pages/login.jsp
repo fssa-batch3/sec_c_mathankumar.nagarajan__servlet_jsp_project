@@ -83,7 +83,7 @@
                         <label>
                             <input class="input-box" id="password" type="password" name="password"
                                 placeholder="Password"
-                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,}$" title="The password must be greater than 8 characters, It Should contains atleast one lowercase, one Uppercase, one number and one special character." required></label>
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!\@\#\$\%\^\&\*]).{8,}$" title="The password must be greater than 8 characters, It Should contains atleast one lowercase, one Uppercase, one number and one special character." required></label>
                     </div>
                     <hr>
                     <label>

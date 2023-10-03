@@ -47,26 +47,47 @@ public class LoginServlet extends HttpServlet {
 
 			user = userService.getUserByEmail(email);
 
-			if (user.getEmail() != null) {
+			String hashPassword = userService.convertHashPassword(password);
 
-				if (user.getEmail().trim().equals(email.trim()) && user.getPassword().trim().equals(password.trim())) {
+			// User Side Validation
+			if ("USER".equalsIgnoreCase(user.getRole())) {
+				if (user.getEmail() != null) {
 
-					session.setAttribute("actUserEmail", user.getEmail());
-					request.setAttribute("success", "Successfully Logged In");
-					dis = request.getRequestDispatcher("index.jsp");
-					dis.forward(request, response);
+					if (user.getEmail().trim().equals(email.trim())
+							&& user.getPassword().trim().equals(hashPassword.trim())) {
 
+						session.setAttribute("actUserEmail", user.getEmail());
+						request.setAttribute("success", "Welcome Back " + user.getFirstName());
+						dis = request.getRequestDispatcher("index.jsp");
+						dis.forward(request, response);
+
+					} else {
+
+						request.setAttribute("error", "Enter Valid Email and Password");
+						dis = request.getRequestDispatcher("pages/login.jsp");
+						dis.forward(request, response);
+
+					}
 				} else {
-
-					request.setAttribute("error", "Enter Valid Email and Password");
+					request.setAttribute("error", "Enter Valid Email Address");
 					dis = request.getRequestDispatcher("pages/login.jsp");
 					dis.forward(request, response);
-
 				}
-			} else {
-				request.setAttribute("error", "Enter Valid Email Address");
-				dis = request.getRequestDispatcher("pages/login.jsp");
-				dis.forward(request, response);
+			} 
+			// Admin Side Validation
+			else {
+				if (user.getEmail().trim().equals(email.trim())
+						&& user.getPassword().trim().equals(hashPassword.trim())) {
+					session.setAttribute("actUserEmail", user.getEmail());
+					request.setAttribute("success", "Successfully Logged");
+					response.sendRedirect(request.getContextPath() + "/GetAllStoreDetailsUserSide");
+				}
+				else {
+					request.setAttribute("error", "Enter Valid Admin Email and Password");
+					dis = request.getRequestDispatcher("pages/login.jsp");
+					dis.forward(request, response);
+				}
+				
 			}
 
 		} catch (ServiceException | DAOException | InvalidUserException e) {
@@ -75,6 +96,13 @@ public class LoginServlet extends HttpServlet {
 			dis = request.getRequestDispatcher("pages/login.jsp");
 			dis.forward(request, response);
 		}
+
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		doPost(request, response);
 
 	}
 
