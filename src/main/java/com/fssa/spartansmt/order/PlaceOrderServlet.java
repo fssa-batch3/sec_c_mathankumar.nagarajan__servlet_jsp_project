@@ -42,6 +42,7 @@ public class PlaceOrderServlet extends HttpServlet {
 		
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		double totalPrice = Double.parseDouble(request.getParameter("totalPrice"));
+		
 		String paymentOption = request.getParameter("paymentOption");
 		
 		
@@ -53,11 +54,31 @@ public class PlaceOrderServlet extends HttpServlet {
 		try {
 			
 			String strProductId = request.getParameter("productIdArr");
-			Logger.info(strProductId);
+			String strQuentity = request.getParameter("quentityArr");
+			Logger.info(strQuentity);
+			
 			if(strProductId.length() == 1) {
 				int productId = Integer.parseInt(strProductId);
 				orderedProductList.add(new OrderedProduct(productId, 1));
 			}else {
+				
+				String[] arrProductId = strProductId.split(",");
+				
+				String[] arrQuentity = strQuentity.split(",");
+				
+				try {
+					int i;
+					for(i=0; i<arrProductId.length; i++) {
+						int productId = Integer.parseInt(arrProductId[i]);
+						int quentity = Integer.parseInt(arrQuentity[i]); 
+						// TODO: Here is get the quantity for the product via the cart
+						// And then to change the i to quantity.
+						orderedProductList.add(new OrderedProduct(productId, quentity));
+					}
+					
+				}catch (NumberFormatException e) {
+					e.printStackTrace();
+				}
 				
 			}
 			

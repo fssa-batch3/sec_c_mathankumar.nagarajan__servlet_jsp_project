@@ -249,6 +249,7 @@
 		// Golbal Scope variable used to get ajax values
 		let userId;
 		let productIdArr = [];
+		let quentityArr = [];
 	
 		// get date code
 
@@ -358,6 +359,8 @@
 			totalPrice += productData.productPrice;
 			
 			productIdArr.push(Number(paramsId));
+			
+			quentityArr.push(Number(1));
             // console.log(totalPrice)
 
             // let div_order_items;
@@ -417,6 +420,8 @@
                 if (paramsId === el.email) {
 
                 	productIdArr.push(Number(el.productId));
+                	
+                	quentityArr.push(Number(el.quantity));
                 	
                     totalPrice += Number(el.productPrice) * el.quantity
 
@@ -485,7 +490,7 @@
             const payment_option = document.querySelector(".radio:checked").value
             console.log(payment_option)
 
-            form.setAttribute("action", "<%=request.getContextPath() %>/PlaceOrderServlet?userId=" + userId + "&totalPrice=" + totalPrice + "&paymentOption=" + payment_option + "&productIdArr=" + productIdArr)
+            form.setAttribute("action", "<%=request.getContextPath() %>/PlaceOrderServlet?userId=" + userId + "&totalPrice=" + totalPrice + "&paymentOption=" + payment_option + "&productIdArr=" + productIdArr + "&quentityArr=" + quentityArr);
 
             form.submit();
             
