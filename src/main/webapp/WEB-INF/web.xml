@@ -13,47 +13,52 @@
 		<welcome-file>default.htm</welcome-file>
 	</welcome-file-list>
 
-	<session-config>
-		<session-timeout>1</session-timeout> <!-- Number of minutes -->
-	</session-config>
-	
+
 	<error-page>
-<!-- 		<exception-type>java.lang.Exception</exception-type> For handling exceptions-->
+		<!-- <exception-type>java.lang.Exception</exception-type> For handling 
+			exceptions -->
 		<error-code>404</error-code> <!-- HTTP Error code Page Not found -->
 		<location>/page-not-found.jsp</location>
 	</error-page>
 	<error-page>
-<!-- 		<exception-type>java.lang.Exception</exception-type> For handling exceptions-->
+		<!-- <exception-type>java.lang.Exception</exception-type> For handling 
+			exceptions -->
 		<error-code>500</error-code> <!-- HTTP Error code Page Not found -->
 		<location>/page-not-found.jsp</location>
 	</error-page>
 	<error-page>
-<!-- 		<exception-type>java.lang.Exception</exception-type> For handling exceptions-->
+		<!-- <exception-type>java.lang.Exception</exception-type> For handling 
+			exceptions -->
 		<error-code>501</error-code> <!-- HTTP Error code Page Not found -->
 		<location>/page-not-found.jsp</location>
 	</error-page>
 	<error-page>
-<!-- 		<exception-type>java.lang.Exception</exception-type> For handling exceptions-->
+		<!-- <exception-type>java.lang.Exception</exception-type> For handling 
+			exceptions -->
 		<error-code>401</error-code> <!-- HTTP Error code Page Not found -->
 		<location>/page-not-found.jsp</location>
 	</error-page>
 	<error-page>
-<!-- 		<exception-type>java.lang.Exception</exception-type> For handling exceptions-->
+		<!-- <exception-type>java.lang.Exception</exception-type> For handling 
+			exceptions -->
 		<error-code>502</error-code> <!-- HTTP Error code Page Not found -->
 		<location>/page-not-found.jsp</location>
 	</error-page>
 	<error-page>
-<!-- 		<exception-type>java.lang.Exception</exception-type> For handling exceptions-->
+		<!-- <exception-type>java.lang.Exception</exception-type> For handling 
+			exceptions -->
 		<error-code>503</error-code> <!-- HTTP Error code Page Not found -->
 		<location>/page-not-found.jsp</location>
 	</error-page>
 	<error-page>
-<!-- 		<exception-type>java.lang.Exception</exception-type> For handling exceptions-->
+		<!-- <exception-type>java.lang.Exception</exception-type> For handling 
+			exceptions -->
 		<error-code>504</error-code> <!-- HTTP Error code Page Not found -->
 		<location>/page-not-found.jsp</location>
 	</error-page>
 	<error-page>
-<!-- 		<exception-type>java.lang.Exception</exception-type> For handling exceptions-->
+		<!-- <exception-type>java.lang.Exception</exception-type> For handling 
+			exceptions -->
 		<error-code>599</error-code> <!-- HTTP Error code Page Not found -->
 		<location>/page-not-found.jsp</location>
 	</error-page>
