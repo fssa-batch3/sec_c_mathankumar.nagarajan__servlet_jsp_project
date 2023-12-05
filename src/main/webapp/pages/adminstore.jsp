@@ -25,7 +25,11 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-
+   <!-- Notify CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.css">
+    
+    <!-- Notify Js script file -->
+    <script src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js"> </script>
 
 
 </head>
@@ -33,11 +37,40 @@
 
 	<%!public static final String GET_PRODUCTS_BY_ID_SERVLET = "GetAllProductDetailsUsingStoreId";%>
 	<%!public static final String GET_STORE_DETAILS_SERVLET = "GetAllStoreDetailsUserSide";%>
+	
+	<!-- Notify Alert -->
+			<%
+			String success = (String) request.getAttribute("success");
+			String error = (String) request.getAttribute("error");
+			%>
+
+
+			<%
+			if (error != null) {
+			%>
+			<script>
+				    let error = "<%=error%>";
+				    Notify.error(error);
+				</script>
+			<%
+			}
+			%>
+
+			<%
+			if (success != null) {
+			%>
+			<script>
+			    	let success = "<%=success%>";
+				Notify.success(success);
+			</script>
+			<%
+			}
+			%>
 
 	<nav>
 
 		<div id="logo">
-			<img src="https://iili.io/Hyo19Tb.png" alt="">
+			<img src="<%=request.getContextPath() %>/assets/image/home/logo.png" alt="SpartansMT">
 		</div>
 
 		<div class="nav">
@@ -64,7 +97,7 @@
 
 			<span class="menu">MENU</span>
 
-			<a href="">
+			<a href="<%=request.getContextPath()%>/pages/adminhome.jsp">
 				<menu>Dashboard
 				</menu>
 			</a>

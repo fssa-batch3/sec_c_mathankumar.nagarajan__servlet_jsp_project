@@ -3,6 +3,7 @@ package com.fssa.spartansmt.product;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,14 +35,19 @@ public class DeleteProductDetailsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String strProductId = request.getParameter("productId");
+		String strStoreId = request.getParameter("id");
 		int productId = Integer.parseInt(strProductId);
+		int storeId = Integer.parseInt(strStoreId);
 		
 		ProductService productService = new ProductService();
 		PrintWriter out = response.getWriter();
 		try {
 			boolean isDeleted = productService.deleteProduct(productId);
 			if (isDeleted) {
-				out.println("<h1>Successfully deleted a product</h1>");
+				request.setAttribute("success", "Successfully deleted a product");
+				request.setAttribute("id", storeId);
+				RequestDispatcher dis = request.getServletContext().getRequestDispatcher("/GetAllProductDetailsUsingStoreId");
+				dis.include(request, response);
 			}
 		}catch (DAOException | InvalidProductDetailsException e) {
 			e.getStackTrace();

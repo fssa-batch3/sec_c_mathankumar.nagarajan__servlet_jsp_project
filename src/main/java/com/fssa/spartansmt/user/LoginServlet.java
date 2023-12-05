@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fssa.spartansmt.errors.UserValidatorErrors;
 import com.fssa.spartansmt.exception.DAOException;
 import com.fssa.spartansmt.exception.InvalidUserException;
 import com.fssa.spartansmt.exception.ServiceException;
+import com.fssa.spartansmt.logger.Logger;
 import com.fssa.spartansmt.model.User;
 import com.fssa.spartansmt.service.UserService;
 
@@ -40,13 +42,24 @@ public class LoginServlet extends HttpServlet {
 
 		// create session
 		HttpSession session = request.getSession();
+		
+		try {
+			userService.login(email, password);
+		}catch(ServiceException e) {
+			e.printStackTrace();
+			request.setAttribute("error", e.getMessage());
+			dis = request.getRequestDispatcher("pages/login.jsp");
+			dis.forward(request, response);
+		}
 
 		try {
 
-			userService.login(email, password);
 
 			user = userService.getUserByEmail(email);
-
+			if(user.getEmail() == null) {
+				throw new InvalidUserException(UserValidatorErrors.INVALID_USER_EMAIL);
+			}
+			
 			String hashPassword = userService.convertHashPassword(password);
 
 			// User Side Validation
@@ -90,7 +103,7 @@ public class LoginServlet extends HttpServlet {
 				
 			}
 
-		} catch (ServiceException | DAOException | InvalidUserException e) {
+		} catch (ServiceException | InvalidUserException e) {
 			e.printStackTrace();
 			request.setAttribute("error", e.getMessage());
 			dis = request.getRequestDispatcher("pages/login.jsp");

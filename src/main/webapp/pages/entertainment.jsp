@@ -45,7 +45,7 @@
 
 	<div class="movies">
 
-		<a href="../entertainment/about movie/about-avatar.html">
+		<a href="../pages/viewmovie.jsp">
 			<div class="movie-container1">
 				<img class="movie-img"
 					src="../assets/image/entertainment/avatar.png" alt="movie">

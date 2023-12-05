@@ -88,6 +88,14 @@
 	<!-- ajax Script Link -->
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script>    
+	
+	
+		function getBaseUrlFromCurrentPage() {
+			const baseUrl = window.location.protocol + '//' + window.location.host + '/';
+			const contextPath = window.location.pathname.split('/')[1]; // Extract the context path
+	
+			return baseUrl + contextPath;
+		}
     
     	// let order_id;
         let price = 0;
@@ -99,7 +107,7 @@
         
         
         function getOrder() {
-			const url = "http://localhost:8080/spartansmt_web/GetOrderUsingOrderId?orderId=" + paramsId;
+			const url = getBaseUrlFromCurrentPage() + "/GetOrderUsingOrderId?orderId=" + paramsId;
 			axios.get(url)
 			  .then(function (response) {
 			    // handle success
@@ -136,7 +144,7 @@
             // Total Price
             price += Number(order.totalPrice);
             const total_price = document.getElementById("total_price")
-            total_price.innerText = "Total Price: " + order.totalPrice;
+            total_price.innerHTML = "Total Price: &#8377;" + order.totalPrice;
             
             order.orderedProducts.forEach(ele => {
             	 getProductDetails(ele.productId, order);
@@ -161,7 +169,7 @@
         }
         
         function getProductDetails(id, order) {
- 			const url = "http://localhost:8080/spartansmt_web/GetProductByProductId?id=" + id;
+ 			const url = getBaseUrlFromCurrentPage() + "/GetProductByProductId?id=" + id;
  			axios.get(url)
  			  .then(function (response) {
  			    // handle success
@@ -227,7 +235,7 @@
 
             h3 = document.createElement("h3")
             h3.setAttribute("class",  "price_h3")
-            h3.innerText = product.productPrice;
+            h3.innerHTML = "&#8377;" + product.productPrice;
             div_order_price.prepend(h3)
 
             p = document.createElement("p")

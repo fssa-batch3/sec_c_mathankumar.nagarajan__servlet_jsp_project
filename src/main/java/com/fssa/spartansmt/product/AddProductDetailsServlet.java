@@ -76,7 +76,9 @@ public class AddProductDetailsServlet extends HttpServlet {
 			boolean isadded = productService.addProduct(product);
 
 			if (isadded) {
-				out.println("<h1>Successfully added a product</h1>");
+				request.setAttribute("success", "Successfully added a product");
+				RequestDispatcher dis = request.getServletContext().getRequestDispatcher("/GetAllProductDetailsUsingStoreId");
+				dis.include(request, response);
 			}
 
 		} catch (DAOException | InvalidProductDetailsException e) {

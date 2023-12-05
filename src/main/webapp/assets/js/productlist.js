@@ -13,11 +13,9 @@ function addbox() {
 }
         
 
-function deletebox(productId){
-    document.querySelector("#delete_box").style.display = "block";
-    
-    
-    document.getElementById("delete_btn").setAttribute("action", "DeleteProductDetailsServlet?productId=" + productId);
+function deletebox(productId, storeId){
+    document.querySelector("#delete_box").style.display = "block";   
+    document.getElementById("delete_btn").setAttribute("action", "DeleteProductDetailsServlet?productId=" + productId + "&id=" + storeId);
     
 }
 function canceldelectbox(){

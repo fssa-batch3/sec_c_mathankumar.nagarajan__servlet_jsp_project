@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -72,7 +73,9 @@ public class UpdateProductDetailsServlet extends HttpServlet {
 			boolean isadded = productService.updateProduct(product);
 
 			if (isadded) {
-				out.println("<h1>Successfully updated a product</h1>");
+				request.setAttribute("success", "Successfully updated a product");
+				RequestDispatcher dis = request.getServletContext().getRequestDispatcher("/GetAllProductDetailsUsingStoreId");
+				dis.include(request, response);
 			}
 
 		} catch (DAOException | InvalidProductDetailsException e) {

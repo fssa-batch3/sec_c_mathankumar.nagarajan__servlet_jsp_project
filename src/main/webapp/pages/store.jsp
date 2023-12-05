@@ -49,27 +49,40 @@
 
 	<script type="text/javascript">
 	
-	// Search function
-    const stores_searchbox = document.getElementById("search_box");
-    stores_searchbox.addEventListener("keyup", e => {
-
-        const search = e.target.value.toLowerCase();
-        const stores = document.querySelectorAll(".search_store");
-
-        stores.forEach(ele => {
-
-            const match_name = ele.children[1].textContent.toLowerCase();
-
-            if (match_name.includes(search)) {
-                ele.style.display = "block";
+		// Search function
+	    const stores_searchbox = document.getElementById("search_box");
+	    stores_searchbox.addEventListener("keyup", e => {
+	
+	        const search = e.target.value.toLowerCase();
+	        const stores = document.querySelectorAll(".search_store");
+	
+	        stores.forEach(ele => {
+	
+	            const match_name = ele.children[1].textContent.toLowerCase();
+	
+	            if (match_name.includes(search)) {
+	                ele.style.display = "block";
+	            }
+	            else {
+	                ele.style.display = "none";
+	            }
+	
+	        })
+	
+	    })
+    
+   		// cart count for nav bar
+       	const Cart = JSON.parse(localStorage.getItem("Cart")) ?? [];
+        const cart_count = document.getElementById("cart_count");
+        let count = 0;
+	
+        Cart.find(e => {
+            if (e.email === "<%=request.getSession(false).getAttribute("actUserEmail") %>") {
+                count++
             }
-            else {
-                ele.style.display = "none";
-            }
-
         })
-
-    })
+		
+        cart_count.innerText = Number(count);
 
 	
 	</script>

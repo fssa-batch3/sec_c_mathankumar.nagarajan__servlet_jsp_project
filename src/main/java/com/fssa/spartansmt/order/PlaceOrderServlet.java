@@ -55,7 +55,6 @@ public class PlaceOrderServlet extends HttpServlet {
 			
 			String strProductId = request.getParameter("productIdArr");
 			String strQuentity = request.getParameter("quentityArr");
-			Logger.info(strQuentity);
 			
 			if(strProductId.length() == 1) {
 				int productId = Integer.parseInt(strProductId);

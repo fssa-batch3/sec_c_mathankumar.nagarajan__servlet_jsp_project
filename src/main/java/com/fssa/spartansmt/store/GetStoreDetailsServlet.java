@@ -26,15 +26,13 @@ public class GetStoreDetailsServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		StoreService storeService = new StoreService();
 		try {
-			List<Store> storeList = storeService.getAllStoreDetails();
+			List<Store> storeList = StoreService.getAllStoreDetails();
 			JSONArray jsonStoreList = new JSONArray(storeList);
 			PrintWriter out = response.getWriter();
 			out.println(jsonStoreList.toString());
 			out.flush();
 			out.close();
-			
 			
 		} catch (DAOException e) {
 			e.printStackTrace();

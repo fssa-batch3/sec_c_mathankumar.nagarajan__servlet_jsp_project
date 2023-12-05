@@ -1,0 +1,397 @@
+@charset "ISO-8859-1";
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
+
+body {
+  
+    font-family: 'Barlow', sans-serif;
+}
+
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+nav {
+    width: 100%;
+    height: 80px;
+    background-color: #f5f5f7;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* position: fixed; */
+}
+
+#logo {
+    line-height: 80px;
+    padding: 0 30px;
+    /* width: 11.5em; */
+    width: 13%;
+    /* height: 4em; */
+    /* margin-left: 30px; */
+    /* padding: 30px; */
+}
+
+ul {
+    /* display: flex;
+    justify-content: space-around;
+    width: 70%; */
+    float: right;
+    font-size: 20px;
+}
+
+li {
+    line-height: 40px;
+    /* display: flex; */
+    display: inline-block;
+    margin: 0 15px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#signup {
+    margin-right: 20px;
+}
+
+.nav-highlighted {
+    border-bottom: 2px solid blue;
+}
+
+
+.checkbtn{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+#check{
+    display: none;
+}
+
+/* nav finished */
+
+.container{
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    /* background-color: #f5f5f5; */
+}
+
+.time_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time_container div{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.time_container div span h2{
+    margin: 10px;
+}
+
+#other_option{
+    text-align: center;
+    color: white;
+    margin: 10% 0%;
+}
+
+.time_container div p select{
+    padding: 10px 20px;
+    border: 2px solid gainsboro;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+#banner{
+    width: 80%;
+    margin: 10px 0px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+}
+
+.date_container {
+  
+    margin: 10px 0px;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.date_container div{
+    margin: 0%;
+    width: 80px;
+    height: 90px;
+    background-color: #e9effd;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 10%;
+}
+
+.date_container div p{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.hr_background{
+    width: 100%;
+    height: 20px;
+    background-color: #e1e8f8;
+    border-radius: 0% 100%;
+    margin: 15px 0px;
+    box-shadow: 0px 10px 50px 1px #e1e8f8;
+}
+
+.booking_seat{
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+}
+
+.booking_seat div{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.booking_seat div p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50% 10% 50% 50%;
+    background-color: #e9effd;
+}
+
+.booking_seat div p:hover{
+    background-color: #f9ba11;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.white{
+    background-color: white;
+}
+.yellow{
+    background-color: #f9ba11;
+}
+.blue{
+    background-color: #4d82ff;
+}
+#booking_hours{
+    color: white;
+    background-color: #3443c2;
+}
+
+
+.ticket_container{
+    border-radius: 0% 5% 5% 0%;
+    width: 45%;
+    background-color: #3443c2;
+    padding: 20px;
+}
+
+/* left container finished */
+
+.align{
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.ticket{
+    background-color: white;
+    border-radius: 3%;
+}
+
+#ticket_count{
+    padding: 10px 20px;
+    border-radius: 15%;
+    background-color: #ffb800;
+}
+
+.qr_code{
+    display: flex;
+    justify-content: center;
+}
+
+.qr_code p{
+    margin-left: 2px;
+    margin-bottom: 20px;
+    width: 3px;
+    height: 50px;
+    background-color: black;
+}
+
+.barcode{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.barcode p{
+    background-color: #3443c2;
+    width: 10px;
+    height: 20px;
+}
+
+.barcode p:nth-child(1){
+    border-radius: 0% 100% 100% 0%;
+}
+
+.barcode p:nth-child(3){
+    border-radius: 100% 0% 0% 100%;
+}
+
+.barcode h2{
+    color: gainsboro;
+}
+
+
+
+.qr_code_scanner{
+    height: 180px;
+    margin: 15% 0%;
+    display: flex;
+    justify-content: center;
+}
+
+.qr_code_scanner img{
+    /* box-shadow: #f9ba11 0px 0px 10px; */
+    padding: 3px;
+    background-color: #f9ba11;
+}
+
+.seat_color{
+    margin-left: 20px;
+    width: 72%;
+    display: flex;
+    justify-content: center;
+}
+
+.seat_color div{
+    display: flex;
+    margin-left: 20px;
+}
+
+.seat_color div p {
+    margin-left: 5px;
+}
+
+
+
+#gray_seat{
+    width: 20px;
+    height: 20px;
+    background-color: #c9ddf0;
+}
+
+#yellow_seat{
+    width: 20px;
+    height: 20px;
+    background-color: #f9ba11;
+}
+
+#blue_seat{
+    width: 20px;
+    height: 20px;
+    background-color: #0082e6;
+}
+
+button{
+    float: right;
+    padding: 20px 40px;
+    background-color: #f9ba11;
+    border: 2px solid rgb(244, 255, 181);
+    font-weight: bolder;
+    font-size: 17px;
+}
+
+button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    background-color: transparent;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:760px) {
+
+    .checkbtn{
+        display: block;
+    }
+    ul{
+        position: fixed;
+        width: 95%;
+        height: 100vh;
+        background: #c9ddf0;
+        top: 60px;
+        left: -120%;
+        text-align: center;
+        transition: all .8s;
+    }
+    nav ul li{
+        display: block;
+        margin: 15px 0;
+        line-height: 30px;
+        font-size: 20px;
+        padding: 20px;
+        color: white;
+        
+    }
+    nav ul li a{
+        font-size: 20px;
+    }
+    a:hover,a.active{
+        background: none;
+        color: #0082e6;
+    }
+    #check:checked ~ ul{
+        left: 0;
+    }
+    #signup{
+        margin-left: 20px;
+    }
+    #logo{
+        width: 120px;
+    }
+    footer{
+        font-size: 10px;
+    }
+    #footer-email{
+        height: 30px;
+        width: 140px;
+    }
+    #footer-button{
+        color: blue;
+        padding-bottom: 2px;
+        width: 30px;
+        height: 37px;
+    }
+}

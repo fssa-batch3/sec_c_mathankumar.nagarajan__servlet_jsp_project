@@ -45,7 +45,7 @@ public class GetUserDetailsUsingEmail extends HttpServlet {
 			User user = userService.getUserByEmail(email);
 			JSONObject userObj = new JSONObject(user);
 			out.print(userObj.toString());
-		}catch(ServiceException | DAOException | InvalidUserException e) {
+		}catch(ServiceException e) {
 			e.printStackTrace();
 			out.println(e.getMessage());
 		}

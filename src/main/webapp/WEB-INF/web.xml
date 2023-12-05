@@ -18,49 +18,49 @@
 		<!-- <exception-type>java.lang.Exception</exception-type> For handling 
 			exceptions -->
 		<error-code>404</error-code> <!-- HTTP Error code Page Not found -->
-		<location>/page-not-found.jsp</location>
+		<location>/page-not-found.jsp?error=404</location>
 	</error-page>
 	<error-page>
 		<!-- <exception-type>java.lang.Exception</exception-type> For handling 
 			exceptions -->
 		<error-code>500</error-code> <!-- HTTP Error code Page Not found -->
-		<location>/page-not-found.jsp</location>
+		<location>/page-not-found.jsp?error=500</location>
 	</error-page>
 	<error-page>
 		<!-- <exception-type>java.lang.Exception</exception-type> For handling 
 			exceptions -->
 		<error-code>501</error-code> <!-- HTTP Error code Page Not found -->
-		<location>/page-not-found.jsp</location>
+		<location>/page-not-found.jsp?error=501</location>
 	</error-page>
 	<error-page>
 		<!-- <exception-type>java.lang.Exception</exception-type> For handling 
 			exceptions -->
 		<error-code>401</error-code> <!-- HTTP Error code Page Not found -->
-		<location>/page-not-found.jsp</location>
+		<location>/page-not-found.jsp?error=401</location>
 	</error-page>
 	<error-page>
 		<!-- <exception-type>java.lang.Exception</exception-type> For handling 
 			exceptions -->
 		<error-code>502</error-code> <!-- HTTP Error code Page Not found -->
-		<location>/page-not-found.jsp</location>
+		<location>/page-not-found.jsp?error=502</location>
 	</error-page>
 	<error-page>
 		<!-- <exception-type>java.lang.Exception</exception-type> For handling 
 			exceptions -->
 		<error-code>503</error-code> <!-- HTTP Error code Page Not found -->
-		<location>/page-not-found.jsp</location>
+		<location>/page-not-found.jsp?error=503</location>
 	</error-page>
 	<error-page>
 		<!-- <exception-type>java.lang.Exception</exception-type> For handling 
 			exceptions -->
 		<error-code>504</error-code> <!-- HTTP Error code Page Not found -->
-		<location>/page-not-found.jsp</location>
+		<location>/page-not-found.jsp?error=504</location>
 	</error-page>
 	<error-page>
 		<!-- <exception-type>java.lang.Exception</exception-type> For handling 
 			exceptions -->
 		<error-code>599</error-code> <!-- HTTP Error code Page Not found -->
-		<location>/page-not-found.jsp</location>
+		<location>/page-not-found.jsp?error=599</location>
 	</error-page>
 
 </web-app>

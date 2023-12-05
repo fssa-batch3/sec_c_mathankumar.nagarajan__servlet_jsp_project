@@ -326,6 +326,23 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="main.js"></script>
+	
+	<script type="text/javascript">
+		
+		// cart count for nav bar
+	   	const Cart = JSON.parse(localStorage.getItem("Cart")) ?? [];
+	    const cart_count = document.getElementById("cart_count");
+	    let count = 0;
+	
+	    Cart.find(e => {
+	        if (e.email === "<%=request.getSession(false).getAttribute("actUserEmail") %>") {
+	            count++
+	        }
+	    })
+		
+	    cart_count.innerText = Number(count);
+	
+	</script>
 
 
 </body>

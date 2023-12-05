@@ -12,7 +12,7 @@
 <title>SpartansMT Admin</title>
 
 <link rel="stylesheet" type="text/css"
-	href="/spartansmt_web/assets/css/admin.css">
+	href="<%=request.getContextPath() %>/assets/css/admin.css">
 
 <link rel="icon" type="image/png" sizes="32x32"
 	href="https://iili.io/HpZaout.png">
@@ -25,6 +25,13 @@
 <!-- Font Awesome link -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	
+	<!-- Notify CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.css">
+    
+    <!-- Notify Js script file -->
+    <script src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js"> </script>
+	
 
 
 </head>
@@ -32,10 +39,40 @@
 
 	<%!public static final String GET_ALL_STORE_DETAILS = "GetAllStoreDetailsUserSide";%>
 
+	<!-- Notify Alert -->
+	<%
+	String success = (String) request.getAttribute("success");
+	String error = (String) request.getAttribute("error");
+	%>
+
+
+	<%
+	if (error != null) {
+	%>
+	<script>
+		   let error = "<%=error%>";
+		   Notify.error(error);
+	</script>
+	<%
+	}
+	%>
+
+	<%
+	if (success != null) {
+	%>
+	<script>
+		let success = "<%=success%>";
+		Notify.success(success);
+	</script>
+	<%
+	}
+	%>
+
+
 	<nav>
 
 		<div id="logo">
-			<img src="https://iili.io/Hyo19Tb.png" alt="">
+			<img src="<%=request.getContextPath() %>/assets/image/home/logo.png" alt="SpartansMT">
 		</div>
 
 		<div class="nav">
@@ -46,8 +83,9 @@
 			</div>
 
 			<div>
-				<span id="profile">Profile</span> <a href="../login/login.html">
-					<i class="fa-solid fa-right-from-bracket logout"></i>
+				<span id="profile">Profile</span> <a
+					href="<%=request.getContextPath()%>/LogoutServlet"> <i
+					class="fa-solid fa-right-from-bracket logout"></i>
 				</a>
 			</div>
 
@@ -61,12 +99,12 @@
 
 			<span class="menu">MENU</span>
 
-			<a href="admin_home.html?id=dashboard">
+			<a href="<%=request.getContextPath()%>/pages/adminhome.jsp">
 				<menu>Dashboard
 				</menu>
 			</a>
 
-			<a href="admin_home.html?id=store_form">
+			<a href="">
 				<menu>Forms
 				</menu>
 			</a>
@@ -126,7 +164,7 @@
 								onclick="updatebox(this, <%=product.getStoreId()%>, <%=product.getProductId()%>)">Edit</button></td>
 
 						<td class="td"><button class="btn_view_store"
-								onclick="deletebox(<%=product.getProductId()%>)">Delete</button></td>
+								onclick="deletebox(<%=product.getProductId()%>, <%=product.getStoreId()%>)">Delete</button></td>
 					</tr>
 
 					<%
@@ -147,8 +185,8 @@
 
 
 		<div id="product_update_box">
-		
-		<button class="cancel_icon" onclick="cancelbox()">X</button>
+
+			<button class="cancel_icon" onclick="cancelbox()">X</button>
 
 			<form
 				action="AddProductDetailsServlet?id=<%=request.getParameter("id")%>"
@@ -158,7 +196,7 @@
 
 				<table>
 
-					
+
 
 					<tr>
 						<td class="label">Title :</td>
@@ -192,8 +230,8 @@
 		</div>
 
 		<div id="product_update_box1">
-		
-		<button class="cancel_icon" onclick="cancelbox()">X</button>
+
+			<button class="cancel_icon" onclick="cancelbox()">X</button>
 
 			<form method="post" id="product_form">
 
@@ -201,7 +239,7 @@
 
 				<table>
 
-					
+
 
 					<tr>
 						<td class="label">Title :</td>

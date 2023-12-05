@@ -28,11 +28,11 @@
 			<h3>
 				Signup Offers & Events<br> Updates
 			</h3>
-			<label> <input id="footer-email" name="email" type="email"
+			<label style="display:flex; align-items:center;"> <input id="footer-email" name="email" type="email"
 				placeholder="hello@gmail.com" required>
+				<button type="button" onclick="email()" id="footer-button"><span class="material-symbols-outlined">send</span></button>
 			</label>
-			<button type="submit" onsubmit="email()" id="footer-button">➡</button>
-		</div>
+			</div>
 		<div>
 			<h3>Follow Us</h3>
 			<img class="footer-icon" src="https://iili.io/J9aEyn1.png"
@@ -57,7 +57,7 @@
 
         // e.preventDefault();
 
-        console.log("Email");
+        // console.log("Email");
 
         Email.send({
             Host: "smtp.elasticemail.com",
@@ -68,7 +68,7 @@
             Subject: "SpartansMT Offers Updates",
             Body: ""
         }).then(
-            message => alert(message)
+            message => alert("Successfully Send Mail Please Check Email Spam folder or Other folders.")
         );
     }
     

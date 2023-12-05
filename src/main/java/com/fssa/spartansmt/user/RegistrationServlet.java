@@ -58,7 +58,7 @@ public class RegistrationServlet extends HttpServlet {
 
 			}
 
-		} catch (DAOException | InvalidUserException | ServiceException | SQLException e) {
+		} catch (ServiceException | SQLException e) {
 			
 			e.getStackTrace();
 			request.setAttribute("error", e.getMessage());

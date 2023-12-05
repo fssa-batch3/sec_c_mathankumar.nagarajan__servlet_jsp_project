@@ -53,7 +53,6 @@ public class UpdateStoreDetailsServlet extends HttpServlet {
 		int storeId = Integer.parseInt(strStoreId);
 		System.out.println(storeId);
 		
-		PrintWriter out = response.getWriter();
 		
 		StoreService storeService = new StoreService();
 		try {
@@ -65,14 +64,14 @@ public class UpdateStoreDetailsServlet extends HttpServlet {
 			boolean isadded = storeService.updateStore(store);
 			
 			if(isadded) {
-				out.println("<h1>Successfully updated store details</h1>");
+				request.setAttribute("success", "Successfully updated store details");
 			}
 			
 		}catch (DAOException | InvalidStoreDetailsException e) {
 			e.getMessage();
 		}
 		
-		RequestDispatcher dis = request.getServletContext().getRequestDispatcher("/GetStoreDetailsServlet");
+		RequestDispatcher dis = request.getServletContext().getRequestDispatcher("/GetAllStoreDetailsUserSide");
 		dis.include(request, response);
 		
 	}

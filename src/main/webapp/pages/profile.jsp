@@ -374,7 +374,14 @@
 
 	<!-- ajax Script Link -->
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script>        
+	<script>      
+	
+		function getBaseUrlFromCurrentPage() {
+			const baseUrl = window.location.protocol + '//' + window.location.host + '/';
+			const contextPath = window.location.pathname.split('/')[1]; // Extract the context path
+	
+			return baseUrl + contextPath;
+		}
     	
     	
     	document.getElementById("profile_details").style.display = "block";
@@ -419,7 +426,7 @@
        
         // Getting user object using Ajax
 		function getUserDetails() {
-			const url = "http://localhost:8080/spartansmt_web/GetUserDetailsUsingEmail?email=" + email;
+			const url = getBaseUrlFromCurrentPage() + "/GetUserDetailsUsingEmail?email=" + email;
 			axios.get(url)
 			  .then(function (response) {
 			    // handle success
@@ -480,7 +487,7 @@
 		
      	// Order Details Codes
      	function getAllOrders() {
-			const url = "http://localhost:8080/spartansmt_web/GetAllOrderesUsingUserId?userId=" + userId;
+			const url = getBaseUrlFromCurrentPage() + "/GetAllOrderesUsingUserId?userId=" + userId;
 			axios.get(url)
 			  .then(function (response) {
 			    // handle success
@@ -575,7 +582,7 @@
      	}
      	
      	 function getProductDetails(id,i) {
- 			const url = "http://localhost:8080/spartansmt_web/GetProductByProductId?id=" + id;
+ 			const url = getBaseUrlFromCurrentPage() + "/GetProductByProductId?id=" + id;
  			axios.get(url)
  			  .then(function (response) {
  			    // handle success

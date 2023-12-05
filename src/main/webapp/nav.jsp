@@ -6,15 +6,20 @@ if (userEmail == null) {
 %>
 
 <nav id="#homepage">
-	<img id="logo" src="https://iili.io/HyZGiwF.png" alt="logo">
+	<img id="logo" src="<%=request.getContextPath()%>/assets/image/home/logo1.png" alt="logo">
 	<ul>
-		<li onclick="login()">Home</li>
-		<li onclick="login()">Stores</li>
-		<li onclick="login()">Offers</li>
-		<li onclick="login()">Entertainment</li>
-		<li onclick="login()">Foodcourt</li>
-		<li onclick="login()">Services</li>
-		<li onclick="login()">Cart</li>
+		<li><a href="<%=request.getContextPath()%>/index.jsp">Home</a></li>
+		<li><a href="<%=request.getContextPath()%>/pages/store.jsp">Stores</a>
+		</li>
+		<li><a href="<%=request.getContextPath()%>/pages/offers.jsp">Offers</a>
+		</li>
+		<li><a
+			href="<%=request.getContextPath()%>/pages/entertainment.jsp">Entertainment</a>
+		</li>
+		<li><a href="<%=request.getContextPath()%>/pages/foodcourt.jsp">Foodcourt</a>
+		</li>
+		<li><a href="<%=request.getContextPath()%>/pages/service.jsp">Services</a>
+		</li>
 		<li><a id="signup"
 			href="<%=request.getContextPath()%>/pages/login.jsp">Sign In</a></li>
 	</ul>
@@ -27,7 +32,7 @@ if (userEmail == null) {
 <!-- isActive class for nav : class="nav-highlighted" -->
 
 <nav id="#homepage">
-	<img id="logo" src="https://iili.io/HyZGiwF.png" alt="logo">
+	<img id="logo" src="<%=request.getContextPath()%>/assets/image/home/logo1.png" alt="logo">
 	<ul>
 		<li><a href="<%=request.getContextPath()%>/index.jsp">Home</a></li>
 		<li><a href="<%=request.getContextPath()%>/pages/store.jsp">Stores</a>
@@ -53,20 +58,20 @@ if (userEmail == null) {
 			<div class="dropdown-content">
 				<a href="<%=request.getContextPath()%>/pages/profile.jsp">
 					<p>
-						<i class="material-symbols-outlined">person</i> Profile
+						<i class="material-symbols-outlined expend">person</i> Profile
 					</p>
 				</a> <a
 					href="<%=request.getContextPath()%>/pages/profile.jsp?id=orders">
 					<p>
-						<i class="material-symbols-outlined">shopping_bag</i> My Orders
+						<i class="material-symbols-outlined expend">shopping_bag</i> My Orders
 					</p>
-				</a> <a href="../home/profile.html?id=wishlist">
+				</a> <a href="<%=request.getContextPath()%>/pages/profile.jsp?id=wishlist">
 					<p>
-						<i class="material-symbols-outlined">favorite</i> WishList
+						<i class="material-symbols-outlined expend">favorite</i> WishList
 					</p>
 				</a> <a href="<%=request.getContextPath()%>/LogoutServlet">
 					<p>
-						<i class="material-symbols-outlined">logout</i> Logout
+						<i class="material-symbols-outlined expend">logout</i> Logout
 					</p>
 				</a>
 			</div></li>

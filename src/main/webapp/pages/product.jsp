@@ -38,7 +38,7 @@
 		%>
 
 		<div class="wishlist">
-			<div class="wishlist_icon">
+			<div class="wishlist_icon" style="display:none;">
 				<img class="icon" id="wishlist_icon"
 					src="https://iili.io/Hy2cCoG.png" alt="img wishlist icon">
 			</div>
@@ -49,8 +49,8 @@
 				<div>
 					<h2 class="product_title"><%=product.getProductTitle()%></h2>
 					<div class="column">
-						<p class="item-price"><%=product.getProductPrice()%></p>
-						<p class="cress">10000</p>
+						<p class="item-price">&#8377;<%=product.getProductPrice()%></p>
+						<p class="cress">&#8377;10000</p>
 						<p>(40%)</p>
 					</div>
 					<div class="star_center_tag">

@@ -244,6 +244,13 @@
 
 	<script>   
 	
+		function getBaseUrlFromCurrentPage() {
+			const baseUrl = window.location.protocol + '//' + window.location.host + '/';
+			const contextPath = window.location.pathname.split('/')[1]; // Extract the context path
+	
+			return baseUrl + contextPath;
+		}
+	
 		const Cart = JSON.parse(localStorage.getItem("Cart")) ?? [];
 	
 		// Golbal Scope variable used to get ajax values
@@ -276,7 +283,7 @@
        
         // Getting user object using Ajax
 		function getUserDetails() {
-			const url = "http://localhost:8080/spartansmt_web/GetUserDetailsUsingEmail?email=" + email;
+			const url = getBaseUrlFromCurrentPage() + "/GetUserDetailsUsingEmail?email=" + email;
 			axios.get(url)
 			  .then(function (response) {
 			    // handle success
@@ -340,7 +347,7 @@
             console.log("work")
 
            function getProductDetails() {
-			const url = "http://localhost:8080/spartansmt_web/GetProductByProductId?id=" + paramsId;
+			const url = getBaseUrlFromCurrentPage() + "/GetProductByProductId?id=" + paramsId;
 			axios.get(url)
 			  .then(function (response) {
 			    // handle success
@@ -484,7 +491,7 @@
         const form = document.getElementById("form")
         form.onsubmit = function checkout(e) {
 
-            e.preventDefault()
+            e.preventDefault();
 
             // payment option checked value
             const payment_option = document.querySelector(".radio:checked").value

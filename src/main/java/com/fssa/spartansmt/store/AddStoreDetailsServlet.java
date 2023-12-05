@@ -42,14 +42,12 @@ public class AddStoreDetailsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		 TODO Auto-generated method stub
-//		doGet(request, response);
+
 
 		String storeTitle = request.getParameter("storeTitle");
 		String storeCategory = request.getParameter("storeCategory");
 		String storeLogo = request.getParameter("storeLogo");
 		
-		PrintWriter out = response.getWriter();
 		
 		StoreService storeService = new StoreService();
 		try {
@@ -57,16 +55,16 @@ public class AddStoreDetailsServlet extends HttpServlet {
 			boolean isadded = storeService.addStore(store);
 			
 			if(isadded) {
-				out.println("<h1>Successfully added store details</h1>");
+				request.setAttribute("success", "Successfully added store details");
+				RequestDispatcher dis = request.getServletContext().getRequestDispatcher("/GetAllStoreDetailsUserSide");
+				dis.include(request, response);
 			}
 			
 		}catch (DAOException | InvalidStoreDetailsException e) {
 			e.getMessage();
-			
 		}
 		
-//		RequestDispatcher dis = request.getServletContext().getRequestDispatcher("/GetStoreDetailsServlet");
-//		dis.include(request, response);
+		
 		
 	
 	}

@@ -29,11 +29,19 @@
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+	
+	<!-- Notify -->
+	<!-- Notify CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.css">
+    
+    <!-- Notify Js script file -->
+    <script src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js"> </script>
 
 </head>
 
 <body>
-
+	
+	<%String email = (String) request.getSession().getAttribute("actUserEmail");%>
 	
 
 	<jsp:include page="../nav.jsp"></jsp:include>
@@ -57,6 +65,17 @@
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script type="text/javascript">
 	
+	
+	
+	
+	function getBaseUrlFromCurrentPage() {
+		const baseUrl = window.location.protocol + '//' + window.location.host + '/';
+		const contextPath = window.location.pathname.split('/')[1]; // Extract the context path
+
+		return baseUrl + contextPath;
+	}
+	
+	
 	const url = window.location.search;                // ?name=Arun
     const urlParams = new URLSearchParams(url);        // converting string into key value pair
     const paramsId = urlParams.get("id")             // return value of the "name" key
@@ -68,7 +87,7 @@
     // below function to get the product details via db
     
     function getProductDetails() {
-			const url = "http://localhost:8080/spartansmt_web/GetProductByProductId?id=" + paramsId;
+			const url = getBaseUrlFromCurrentPage() + "/GetProductByProductId?id=" + paramsId;
 			axios.get(url)
 			  .then(function (response) {
 			    // handle success
@@ -171,21 +190,21 @@
 	            },
 	            {
 	                offer: "Bank Offer:",
-	                coupon: " 10% instant discount on SBI Credit Card, up to ₹750 on orders of ₹2,500 and above T&C",
+	                coupon: " 10% instant discount on SBI Credit Card, up to &#8377;750 on orders of &#8377;2,500 and above T&C",
 	            },
 	            {
 	                offer: "Bank Offer:",
-	                coupon: " Flat ₹100 Instant Cashback on Paytm Wallet. Min Order Value ₹1000. Valid once per Paytm account T&C",
+	                coupon: " Flat &#8377;100 Instant Cashback on Paytm Wallet. Min Order Value &#8377;1000. Valid once per Paytm account T&C",
 	            }
 	        ]
 
 	        for (let i = 0; i < 3; i++) {
 	            li = document.createElement("li");
-	            li.innerText = b[i].coupon;
+	            li.innerHTML = b[i].coupon;
 	            ol.append(li);
 
 	            const bold = document.createElement("b");
-	            bold.innerText = b[i].offer
+	            bold.innerHTML = b[i].offer
 	            li.prepend(bold);
 	        }
 
@@ -204,7 +223,7 @@
 	        div_button.prepend(a_add_to_cart)
 
 	        const a_buy_no1 = document.createElement("a");
-	        a_buy_no1.setAttribute("href", "<%=request.getContextPath() %>/pages/paymentpage.jsp?id=" + paramsId)
+	        a_buy_no1.setAttribute("id", "alertBuyNow");
 	        div_button.append(a_buy_no1)
 
 
@@ -218,12 +237,28 @@
 	        
 	        
 	     	// Add to Cart Codes Below Written
+	     	
 			const btn_cart = document.getElementById("btn_cart")
 	        btn_cart.addEventListener("click", el => {
 	        	
-	        	addCart(el);
+	        	if("<%=email%>" != null){
+	        		addCart(el);
+	        	}else{
+	        		login()
+	        	}
 
 	        })
+	        const alertBuyNow = document.getElementById("alertBuyNow")
+	        alertBuyNow.addEventListener("click", el => {
+	        	
+	        	if("<%=email%>" != null){
+	        		window.location.href = "<%=request.getContextPath() %>/pages/paymentpage.jsp?id=" + paramsId;
+	        	}else{
+	        		login()
+	        	}
+
+	        })
+	       
 	        
 
 			
@@ -275,6 +310,12 @@
 
             }
 			
+		}
+		
+		// Is Login or Not Alert Function
+		function login(){
+		    let error = "Please login your account";
+		    Notify.error(error);
 		}
 		
 		// cart count for nav bar

@@ -3,6 +3,7 @@ package com.fssa.spartansmt.store;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,16 +45,17 @@ public class DelectStoreDetailsServlet extends HttpServlet {
 		String strStoreId = request.getParameter("storeId");
 		int storeId = Integer.parseInt(strStoreId);
 		
-		StoreService storeService = new StoreService();
-		PrintWriter out = response.getWriter();
 		try {
-			boolean isDeleted = storeService.deleteStore(storeId);
+			boolean isDeleted = StoreService.deleteStore(storeId);
 			if (isDeleted) {
-				out.println("<h1>Successfully deleted a store</h1>");
+				request.setAttribute("success", "Successfully deleted a store");
+				RequestDispatcher dis = request.getServletContext().getRequestDispatcher("/GetAllStoreDetailsUserSide");
+				dis.include(request, response);
 			}
 		}catch (DAOException | InvalidStoreDetailsException e) {
 			e.getStackTrace();
 		}
+		
 		
 	}
 
